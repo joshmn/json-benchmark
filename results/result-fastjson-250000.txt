@@ -1,0 +1,79 @@
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /homes.json?via=fastjson&limit=250000&bob=34e569b6c5c1b58ac7453c6dcd64ed17
+Document Length:        29014818 bytes
+
+Concurrency Level:      1
+Time taken for tests:   108.383 seconds
+Complete requests:      5
+Failed requests:        4
+   (Connect: 0, Receive: 0, Length: 4, Exceptions: 0)
+Total transferred:      145073251 bytes
+HTML transferred:       145071001 bytes
+Requests per second:    0.05 [#/sec] (mean)
+Time per request:       21676.571 [ms] (mean)
+Time per request:       21676.571 [ms] (mean, across all concurrent requests)
+Transfer rate:          1307.15 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing: 20371 21676 1589.5  22020   23429
+Waiting:    20363 21668 1589.4  22011   23420
+Total:      20371 21677 1589.5  22020   23429
+
+Percentage of the requests served within a certain time (ms)
+  50%  20639
+  66%  23401
+  75%  23401
+  80%  23429
+  90%  23429
+  95%  23429
+  98%  23429
+  99%  23429
+ 100%  23429 (longest request)
+
+Rails response builder
+return render json: homes.map { |home| Fast::HomeSerializer.new(home) }.to_json
+
+
+Rails request log
+Started GET "/homes.json?via=fastjson&limit=250000&bob=34e569b6c5c1b58ac7453c6dcd64ed17" for ::1 at 2020-04-19 11:49:38 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fastjson", "limit"=>"250000", "bob"=>"34e569b6c5c1b58ac7453c6dcd64ed17"}
+  [1m[36mHome Load (241.9ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 250000]]
+  ↳ app/controllers/homes_controller.rb:14:in `map'
+Completed 200 OK in 20290ms (Views: 0.2ms | ActiveRecord: 241.9ms | Allocations: 36500898)
+Started GET "/homes.json?via=fastjson&limit=250000&bob=34e569b6c5c1b58ac7453c6dcd64ed17" for ::1 at 2020-04-19 11:49:58 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fastjson", "limit"=>"250000", "bob"=>"34e569b6c5c1b58ac7453c6dcd64ed17"}
+  [1m[36mHome Load (230.9ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 250000]]
+  ↳ app/controllers/homes_controller.rb:14:in `map'
+Completed 200 OK in 20463ms (Views: 0.2ms | ActiveRecord: 230.9ms | Allocations: 36500905)
+Started GET "/homes.json?via=fastjson&limit=250000&bob=34e569b6c5c1b58ac7453c6dcd64ed17" for ::1 at 2020-04-19 11:50:18 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fastjson", "limit"=>"250000", "bob"=>"34e569b6c5c1b58ac7453c6dcd64ed17"}
+  [1m[36mHome Load (220.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 250000]]
+  ↳ app/controllers/homes_controller.rb:14:in `map'
+Completed 200 OK in 23314ms (Views: 0.2ms | ActiveRecord: 220.4ms | Allocations: 36500906)
+Started GET "/homes.json?via=fastjson&limit=250000&bob=34e569b6c5c1b58ac7453c6dcd64ed17" for ::1 at 2020-04-19 11:50:42 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fastjson", "limit"=>"250000", "bob"=>"34e569b6c5c1b58ac7453c6dcd64ed17"}
+  [1m[36mHome Load (337.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 250000]]
+  ↳ app/controllers/homes_controller.rb:14:in `map'
+Completed 200 OK in 23347ms (Views: 0.2ms | ActiveRecord: 337.5ms | Allocations: 36500904)
+Started GET "/homes.json?via=fastjson&limit=250000&bob=34e569b6c5c1b58ac7453c6dcd64ed17" for ::1 at 2020-04-19 11:51:05 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fastjson", "limit"=>"250000", "bob"=>"34e569b6c5c1b58ac7453c6dcd64ed17"}
+  [1m[36mHome Load (236.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 250000]]
+  ↳ app/controllers/homes_controller.rb:14:in `map'
+Completed 200 OK in 20544ms (Views: 0.2ms | ActiveRecord: 236.2ms | Allocations: 36500907)

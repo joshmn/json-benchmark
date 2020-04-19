@@ -1,0 +1,80 @@
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /homes.json?via=pg&limit=250000&bob=d0feda90cd646b0681bb5a00d220d834
+Document Length:        18069845 bytes
+
+Concurrency Level:      1
+Time taken for tests:   7.265 seconds
+Complete requests:      5
+Failed requests:        4
+   (Connect: 0, Receive: 0, Length: 4, Exceptions: 0)
+Total transferred:      90351385 bytes
+HTML transferred:       90349140 bytes
+Requests per second:    0.69 [#/sec] (mean)
+Time per request:       1452.932 [ms] (mean)
+Time per request:       1452.932 [ms] (mean, across all concurrent requests)
+Transfer rate:          12145.61 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:  1256 1453 252.5   1419    1882
+Waiting:     1250 1447 252.4   1413    1876
+Total:       1256 1453 252.5   1419    1882
+
+Percentage of the requests served within a certain time (ms)
+  50%   1387
+  66%   1452
+  75%   1452
+  80%   1882
+  90%   1882
+  95%   1882
+  98%   1882
+  99%   1882
+ 100%   1882 (longest request)
+
+Rails response builder
+query = "select json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (#{homes.to_sql}) home;"
+      return render json: Home.connection.exec_query(query)[0]['json_agg'], adapter: nil, serializer: nil
+
+
+Rails request log
+Started GET "/homes.json?via=pg&limit=250000&bob=d0feda90cd646b0681bb5a00d220d834" for ::1 at 2020-04-19 11:54:01 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"250000", "bob"=>"d0feda90cd646b0681bb5a00d220d834"}
+  [1m[35mSQL (1192.5ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 250000) home;[0m
+  ↳ app/controllers/homes_controller.rb:27:in `index'
+Completed 200 OK in 1222ms (Views: 0.2ms | ActiveRecord: 1192.5ms | Allocations: 683)
+Started GET "/homes.json?via=pg&limit=250000&bob=d0feda90cd646b0681bb5a00d220d834" for ::1 at 2020-04-19 11:54:02 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"250000", "bob"=>"d0feda90cd646b0681bb5a00d220d834"}
+  [1m[35mSQL (1650.7ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 250000) home;[0m
+  ↳ app/controllers/homes_controller.rb:27:in `index'
+Completed 200 OK in 1819ms (Views: 0.2ms | ActiveRecord: 1650.7ms | Allocations: 673)
+Started GET "/homes.json?via=pg&limit=250000&bob=d0feda90cd646b0681bb5a00d220d834" for ::1 at 2020-04-19 11:54:04 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"250000", "bob"=>"d0feda90cd646b0681bb5a00d220d834"}
+  [1m[35mSQL (1360.0ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 250000) home;[0m
+  ↳ app/controllers/homes_controller.rb:27:in `index'
+Completed 200 OK in 1390ms (Views: 0.2ms | ActiveRecord: 1360.0ms | Allocations: 668)
+Started GET "/homes.json?via=pg&limit=250000&bob=d0feda90cd646b0681bb5a00d220d834" for ::1 at 2020-04-19 11:54:05 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"250000", "bob"=>"d0feda90cd646b0681bb5a00d220d834"}
+  [1m[35mSQL (1302.0ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 250000) home;[0m
+  ↳ app/controllers/homes_controller.rb:27:in `index'
+Completed 200 OK in 1326ms (Views: 0.2ms | ActiveRecord: 1302.0ms | Allocations: 669)
+Started GET "/homes.json?via=pg&limit=250000&bob=d0feda90cd646b0681bb5a00d220d834" for ::1 at 2020-04-19 11:54:07 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"250000", "bob"=>"d0feda90cd646b0681bb5a00d220d834"}
+  [1m[35mSQL (1173.9ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 250000) home;[0m
+  ↳ app/controllers/homes_controller.rb:27:in `index'
+Completed 200 OK in 1195ms (Views: 0.2ms | ActiveRecord: 1173.9ms | Allocations: 672)
