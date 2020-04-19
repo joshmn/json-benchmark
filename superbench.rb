@@ -17,6 +17,10 @@ OptionParser.new do |opts|
     options[:limit] = v
   end
 
+  opts.on('-h', '--host [HOST]', "Host") do |v|
+    options[:host] = "young-spire-59440.herokuapp.com"
+  end
+
   opts.on('-a', '--all', "All the kinds") do |v|
     options[:all] = true
   end
@@ -30,15 +34,20 @@ if options[:all]
   eval(file)
 end
 
+options[:host] ||= 'localhost:3000'
 def self.run(options)
   puts "On #{options.inspect}"
   random = SecureRandom.hex
   query = "homes.json?via=#{options[:kind]}&limit=#{options[:limit]}&bob=#{random}"
-  filename = "results/result-#{options[:kind]}-#{options[:limit]}.txt"
-  system("ab -n 5 'http://localhost:3000/#{query}' > #{filename}")
-
-  #log = `cat log/development.log | grep -A 6 '/#{query}'`.strip
-  log = `sed -n '/#{query}/,/Completed 200/p' log/development.log`
+  filename = "results/result-#{options[:kind]}-#{options[:limit]}-#{options[:host]}.txt"
+  system("ab -n 5 'http://#{options[:host]}/#{query}' > #{filename}")
+  if options[:host].index("heroku")
+    `heroku logs -n 1000 > #{random}-log.txt`
+    log = `sed -n '/#{query}/,/Completed 200/p' #{random}-log.txt`
+    `rm #{random}-log.txt`
+  else
+    log = `sed -n '/#{query}/,/Completed 200/p' log/development.log`
+  end
   response_builder = File.read('app/controllers/homes_controller.rb').split("when '#{options[:kind]}'", 2)[1].split("when")[0].split(" end")[0].strip
   open(filename, 'a') { |f| f.puts "\nRails response builder\n#{response_builder}\n\n\nRails request log\n#{log}" }
 end

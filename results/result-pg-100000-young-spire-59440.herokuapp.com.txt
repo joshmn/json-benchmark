@@ -1,0 +1,84 @@
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking young-spire-59440.herokuapp.com (be patient).....done
+
+
+Server Software:        Cowboy
+Server Hostname:        young-spire-59440.herokuapp.com
+Server Port:            80
+
+Document Path:          /homes.json?via=pg&limit=100000&bob=9405fb567126313abe3d57a068bd5c39
+Document Length:        7016953 bytes
+
+Concurrency Level:      1
+Time taken for tests:   22.628 seconds
+Complete requests:      5
+Failed requests:        0
+Total transferred:      35087450 bytes
+HTML transferred:       35084765 bytes
+Requests per second:    0.22 [#/sec] (mean)
+Time per request:       4525.560 [ms] (mean)
+Time per request:       4525.560 [ms] (mean, across all concurrent requests)
+Transfer rate:          1514.29 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       76   78   2.2     79      82
+Processing:  2913 4447 2390.5   3640    8679
+Waiting:     1040 1639 575.2   1551    2594
+Total:       2989 4526 2390.5   3718    8758
+
+Percentage of the requests served within a certain time (ms)
+  50%   3480
+  66%   3957
+  75%   3957
+  80%   8758
+  90%   8758
+  95%   8758
+  98%   8758
+  99%   8758
+ 100%   8758 (longest request)
+
+Rails response builder
+query = "select json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (#{homes.to_sql}) home;"
+      return render json: Home.connection.exec_query(query)[0]['json_agg'], adapter: nil, serializer: nil
+
+
+Rails request log
+2020-04-19T19:38:00.432466+00:00 app[web.1]: I, [2020-04-19T19:38:00.432361 #4]  INFO -- : [3115154e-b8d1-49af-b502-ff79a724e414] Started GET "/homes.json?via=pg&limit=100000&bob=9405fb567126313abe3d57a068bd5c39" for 98.165.33.87 at 2020-04-19 19:38:00 +0000
+2020-04-19T19:38:00.434694+00:00 app[web.1]: I, [2020-04-19T19:38:00.434598 #4]  INFO -- : [3115154e-b8d1-49af-b502-ff79a724e414] Processing by HomesController#index as JSON
+2020-04-19T19:38:00.434809+00:00 app[web.1]: I, [2020-04-19T19:38:00.434714 #4]  INFO -- : [3115154e-b8d1-49af-b502-ff79a724e414]   Parameters: {"via"=>"pg", "limit"=>"100000", "bob"=>"9405fb567126313abe3d57a068bd5c39"}
+2020-04-19T19:38:01.821073+00:00 app[web.1]: D, [2020-04-19T19:38:01.820944 #4] DEBUG -- : [3115154e-b8d1-49af-b502-ff79a724e414]   [1m[35mSQL (1381.1ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100000) home;[0m
+2020-04-19T19:38:01.925017+00:00 app[web.1]: I, [2020-04-19T19:38:01.924891 #4]  INFO -- : [3115154e-b8d1-49af-b502-ff79a724e414] /homes.json (1489.6ms)
+2020-04-19T19:38:01.925182+00:00 app[web.1]: I, [2020-04-19T19:38:01.925114 #4]  INFO -- : [3115154e-b8d1-49af-b502-ff79a724e414] Completed 200 OK in 1490ms (Views: 0.3ms | ActiveRecord: 1381.1ms | Allocations: 375)
+2020-04-19T19:38:02.385057+00:00 heroku[router]: at=info method=GET path="/homes.json?via=pg&limit=100000&bob=9405fb567126313abe3d57a068bd5c39" host=young-spire-59440.herokuapp.com request_id=3115154e-b8d1-49af-b502-ff79a724e414 fwd="98.165.33.87" dyno=web.1 connect=0ms service=1954ms status=200 bytes=1448 protocol=http
+2020-04-19T19:38:03.884489+00:00 app[web.1]: I, [2020-04-19T19:38:03.884386 #4]  INFO -- : [243d0aed-3d2c-41cb-bcd9-2690c0d7713a] Started GET "/homes.json?via=pg&limit=100000&bob=9405fb567126313abe3d57a068bd5c39" for 98.165.33.87 at 2020-04-19 19:38:03 +0000
+2020-04-19T19:38:03.885295+00:00 app[web.1]: I, [2020-04-19T19:38:03.885219 #4]  INFO -- : [243d0aed-3d2c-41cb-bcd9-2690c0d7713a] Processing by HomesController#index as JSON
+2020-04-19T19:38:03.885368+00:00 app[web.1]: I, [2020-04-19T19:38:03.885302 #4]  INFO -- : [243d0aed-3d2c-41cb-bcd9-2690c0d7713a]   Parameters: {"via"=>"pg", "limit"=>"100000", "bob"=>"9405fb567126313abe3d57a068bd5c39"}
+2020-04-19T19:38:05.125925+00:00 app[web.1]: D, [2020-04-19T19:38:05.125798 #4] DEBUG -- : [243d0aed-3d2c-41cb-bcd9-2690c0d7713a]   [1m[35mSQL (1238.5ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100000) home;[0m
+2020-04-19T19:38:05.131008+00:00 app[web.1]: I, [2020-04-19T19:38:05.130931 #4]  INFO -- : [243d0aed-3d2c-41cb-bcd9-2690c0d7713a] /homes.json (1245.1ms)
+2020-04-19T19:38:05.131202+00:00 app[web.1]: I, [2020-04-19T19:38:05.131139 #4]  INFO -- : [243d0aed-3d2c-41cb-bcd9-2690c0d7713a] Completed 200 OK in 1246ms (Views: 0.3ms | ActiveRecord: 1238.5ms | Allocations: 368)
+2020-04-19T19:38:05.555765+00:00 heroku[router]: at=info method=GET path="/homes.json?via=pg&limit=100000&bob=9405fb567126313abe3d57a068bd5c39" host=young-spire-59440.herokuapp.com request_id=243d0aed-3d2c-41cb-bcd9-2690c0d7713a fwd="98.165.33.87" dyno=web.1 connect=1ms service=1673ms status=200 bytes=7240 protocol=http
+2020-04-19T19:38:07.838868+00:00 app[web.1]: I, [2020-04-19T19:38:07.838770 #4]  INFO -- : [9a90ca72-fa82-4701-aae5-d676e4ebe0e4] Started GET "/homes.json?via=pg&limit=100000&bob=9405fb567126313abe3d57a068bd5c39" for 98.165.33.87 at 2020-04-19 19:38:07 +0000
+2020-04-19T19:38:07.839628+00:00 app[web.1]: I, [2020-04-19T19:38:07.839553 #4]  INFO -- : [9a90ca72-fa82-4701-aae5-d676e4ebe0e4] Processing by HomesController#index as JSON
+2020-04-19T19:38:07.839685+00:00 app[web.1]: I, [2020-04-19T19:38:07.839629 #4]  INFO -- : [9a90ca72-fa82-4701-aae5-d676e4ebe0e4]   Parameters: {"via"=>"pg", "limit"=>"100000", "bob"=>"9405fb567126313abe3d57a068bd5c39"}
+2020-04-19T19:38:08.727944+00:00 app[web.1]: D, [2020-04-19T19:38:08.727817 #4] DEBUG -- : [9a90ca72-fa82-4701-aae5-d676e4ebe0e4]   [1m[35mSQL (886.5ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100000) home;[0m
+2020-04-19T19:38:08.729742+00:00 app[web.1]: I, [2020-04-19T19:38:08.729643 #4]  INFO -- : [9a90ca72-fa82-4701-aae5-d676e4ebe0e4] /homes.json (889.6ms)
+2020-04-19T19:38:08.729942+00:00 app[web.1]: I, [2020-04-19T19:38:08.729872 #4]  INFO -- : [9a90ca72-fa82-4701-aae5-d676e4ebe0e4] Completed 200 OK in 890ms (Views: 0.3ms | ActiveRecord: 886.5ms | Allocations: 367)
+2020-04-19T19:38:09.207816+00:00 heroku[router]: at=info method=GET path="/homes.json?via=pg&limit=100000&bob=9405fb567126313abe3d57a068bd5c39" host=young-spire-59440.herokuapp.com request_id=9a90ca72-fa82-4701-aae5-d676e4ebe0e4 fwd="98.165.33.87" dyno=web.1 connect=0ms service=1370ms status=200 bytes=14480 protocol=http
+2020-04-19T19:38:10.831106+00:00 app[web.1]: I, [2020-04-19T19:38:10.831008 #4]  INFO -- : [f7a36212-bf8b-4ddd-961b-d3227e442f0b] Started GET "/homes.json?via=pg&limit=100000&bob=9405fb567126313abe3d57a068bd5c39" for 98.165.33.87 at 2020-04-19 19:38:10 +0000
+2020-04-19T19:38:10.831861+00:00 app[web.1]: I, [2020-04-19T19:38:10.831794 #4]  INFO -- : [f7a36212-bf8b-4ddd-961b-d3227e442f0b] Processing by HomesController#index as JSON
+2020-04-19T19:38:10.831928+00:00 app[web.1]: I, [2020-04-19T19:38:10.831875 #4]  INFO -- : [f7a36212-bf8b-4ddd-961b-d3227e442f0b]   Parameters: {"via"=>"pg", "limit"=>"100000", "bob"=>"9405fb567126313abe3d57a068bd5c39"}
+2020-04-19T19:38:12.141182+00:00 app[web.1]: D, [2020-04-19T19:38:12.141027 #4] DEBUG -- : [f7a36212-bf8b-4ddd-961b-d3227e442f0b]   [1m[35mSQL (1307.4ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100000) home;[0m
+2020-04-19T19:38:12.153125+00:00 app[web.1]: I, [2020-04-19T19:38:12.153008 #4]  INFO -- : [f7a36212-bf8b-4ddd-961b-d3227e442f0b] /homes.json (1320.7ms)
+2020-04-19T19:38:12.153291+00:00 app[web.1]: I, [2020-04-19T19:38:12.153233 #4]  INFO -- : [f7a36212-bf8b-4ddd-961b-d3227e442f0b] Completed 200 OK in 1321ms (Views: 0.3ms | ActiveRecord: 1307.4ms | Allocations: 375)
+2020-04-19T19:38:12.596288+00:00 heroku[router]: at=info method=GET path="/homes.json?via=pg&limit=100000&bob=9405fb567126313abe3d57a068bd5c39" host=young-spire-59440.herokuapp.com request_id=f7a36212-bf8b-4ddd-961b-d3227e442f0b fwd="98.165.33.87" dyno=web.1 connect=0ms service=1766ms status=200 bytes=4344 protocol=http
+2020-04-19T19:38:14.307257+00:00 app[web.1]: I, [2020-04-19T19:38:14.307155 #4]  INFO -- : [f848ec9a-e7e2-4e24-8048-0b08f0c6a126] Started GET "/homes.json?via=pg&limit=100000&bob=9405fb567126313abe3d57a068bd5c39" for 98.165.33.87 at 2020-04-19 19:38:14 +0000
+2020-04-19T19:38:14.308320+00:00 app[web.1]: I, [2020-04-19T19:38:14.308054 #4]  INFO -- : [f848ec9a-e7e2-4e24-8048-0b08f0c6a126] Processing by HomesController#index as JSON
+2020-04-19T19:38:14.308431+00:00 app[web.1]: I, [2020-04-19T19:38:14.308371 #4]  INFO -- : [f848ec9a-e7e2-4e24-8048-0b08f0c6a126]   Parameters: {"via"=>"pg", "limit"=>"100000", "bob"=>"9405fb567126313abe3d57a068bd5c39"}
+2020-04-19T19:38:16.708351+00:00 app[web.1]: D, [2020-04-19T19:38:16.708197 #4] DEBUG -- : [f848ec9a-e7e2-4e24-8048-0b08f0c6a126]   [1m[35mSQL (2397.4ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100000) home;[0m
+2020-04-19T19:38:16.714248+00:00 app[web.1]: I, [2020-04-19T19:38:16.714133 #4]  INFO -- : [f848ec9a-e7e2-4e24-8048-0b08f0c6a126] /homes.json (2405.3ms)
+2020-04-19T19:38:16.714458+00:00 app[web.1]: I, [2020-04-19T19:38:16.714391 #4]  INFO -- : [f848ec9a-e7e2-4e24-8048-0b08f0c6a126] Completed 200 OK in 2406ms (Views: 0.3ms | ActiveRecord: 2397.4ms | Allocations: 372)
+2020-04-19T19:38:17.160048+00:00 heroku[router]: at=info method=GET path="/homes.json?via=pg&limit=100000&bob=9405fb567126313abe3d57a068bd5c39" host=young-spire-59440.herokuapp.com request_id=f848ec9a-e7e2-4e24-8048-0b08f0c6a126 fwd="98.165.33.87" dyno=web.1 connect=0ms service=2854ms status=200 bytes=14480 protocol=http
