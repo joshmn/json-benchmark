@@ -2,7 +2,7 @@ class HomesController < ApplicationController
   around_action :benchmark!
 
   def index
-    @types = ['asm', 'asm-ar', 'fastjson', 'map', 'map-ar', 'map-oj', 'map-oj-ar', 'pg']
+    @types = ['asm', 'asm-ar', 'fastjson', 'map', 'map-ar', 'map-oj', 'map-oj-ar', 'pg', 'pg-ext', 'ar-ext']
 
     homes = Home.select(:id, :latitude, :longitude).limit(params[:limit] || 10000)
 

@@ -42,6 +42,10 @@ GEM
       activemodel (>= 4.1, < 6.1)
       case_transform (>= 0.2)
       jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
+    active_record_extended (1.4.0)
+      activerecord (>= 5.0, < 6.1)
+      ar_outer_joins (~> 0.2)
+      pg (< 2.0)
     activejob (6.0.2.2)
       activesupport (= 6.0.2.2)
       globalid (>= 0.3.6)
@@ -63,6 +67,8 @@ GEM
       zeitwerk (~> 2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ar_outer_joins (0.2.0)
+      activerecord (>= 3.2)
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
@@ -214,6 +220,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
+  active_record_extended
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
