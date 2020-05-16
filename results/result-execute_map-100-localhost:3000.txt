@@ -1,0 +1,88 @@
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /homes.json?via=execute_map&limit=100&bob=3ba7fa90fbcb44d9bd1773c341b4028c
+Document Length:        6325 bytes
+
+Concurrency Level:      1
+Time taken for tests:   1.875 seconds
+Complete requests:      5
+Failed requests:        0
+Total transferred:      33870 bytes
+HTML transferred:       31625 bytes
+Requests per second:    2.67 [#/sec] (mean)
+Time per request:       375.027 [ms] (mean)
+Time per request:       375.027 [ms] (mean, across all concurrent requests)
+Transfer rate:          17.64 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:   358  375  14.1    381     391
+Waiting:      358  375  14.1    381     391
+Total:        359  375  14.1    381     391
+
+Percentage of the requests served within a certain time (ms)
+  50%    375
+  66%    386
+  75%    386
+  80%    391
+  90%    391
+  95%    391
+  98%    391
+  99%    391
+ 100%    391 (longest request)
+
+Rails response builder
+return render json: Home.connection.execute(homes.to_sql).to_a.map { |home| {id: home['id'], latitude: home['latitude'], longitude: home['longitude'] } }.to_json, adapter: nil
+
+
+Rails request log
+Started GET "/homes.json?via=execute_map&limit=100&bob=3ba7fa90fbcb44d9bd1773c341b4028c" for ::1 at 2020-05-16 13:35:09 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"execute_map", "limit"=>"100", "bob"=>"3ba7fa90fbcb44d9bd1773c341b4028c"}
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:74:in `index'
+Memory retained: 0mb
+Memory allocated: 4mb
+Completed 200 OK in 388ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 20739)
+Started GET "/homes.json?via=execute_map&limit=100&bob=3ba7fa90fbcb44d9bd1773c341b4028c" for ::1 at 2020-05-16 13:35:10 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"execute_map", "limit"=>"100", "bob"=>"3ba7fa90fbcb44d9bd1773c341b4028c"}
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:74:in `index'
+Memory retained: 0mb
+Memory allocated: 4mb
+Completed 200 OK in 384ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 20707)
+Started GET "/homes.json?via=execute_map&limit=100&bob=3ba7fa90fbcb44d9bd1773c341b4028c" for ::1 at 2020-05-16 13:35:10 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"execute_map", "limit"=>"100", "bob"=>"3ba7fa90fbcb44d9bd1773c341b4028c"}
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:74:in `index'
+Memory retained: 0mb
+Memory allocated: 4mb
+Completed 200 OK in 372ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 20726)
+Started GET "/homes.json?via=execute_map&limit=100&bob=3ba7fa90fbcb44d9bd1773c341b4028c" for ::1 at 2020-05-16 13:35:11 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"execute_map", "limit"=>"100", "bob"=>"3ba7fa90fbcb44d9bd1773c341b4028c"}
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:74:in `index'
+Memory retained: 0mb
+Memory allocated: 4mb
+Completed 200 OK in 361ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 20707)
+Started GET "/homes.json?via=execute_map&limit=100&bob=3ba7fa90fbcb44d9bd1773c341b4028c" for ::1 at 2020-05-16 13:35:11 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"execute_map", "limit"=>"100", "bob"=>"3ba7fa90fbcb44d9bd1773c341b4028c"}
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:74:in `index'
+Memory retained: 0mb
+Memory allocated: 4mb
+Completed 200 OK in 356ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 20707)

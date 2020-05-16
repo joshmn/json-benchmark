@@ -1,0 +1,89 @@
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /homes.json?via=asm_execute_oj&limit=100&bob=8d91aa5ed4697088c7cac5fde09d467c
+Document Length:        6325 bytes
+
+Concurrency Level:      1
+Time taken for tests:   1.756 seconds
+Complete requests:      5
+Failed requests:        0
+Total transferred:      33870 bytes
+HTML transferred:       31625 bytes
+Requests per second:    2.85 [#/sec] (mean)
+Time per request:       351.155 [ms] (mean)
+Time per request:       351.155 [ms] (mean, across all concurrent requests)
+Transfer rate:          18.84 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:   349  351   2.2    351     355
+Waiting:      349  351   2.1    351     354
+Total:        349  351   2.2    351     355
+
+Percentage of the requests served within a certain time (ms)
+  50%    351
+  66%    351
+  75%    351
+  80%    355
+  90%    355
+  95%    355
+  98%    355
+  99%    355
+ 100%    355 (longest request)
+
+Rails response builder
+homes = Home.connection.execute(homes.to_sql).to_a
+      return render json: Oj.dump(ActiveModel::Serializer::CollectionSerializer.new(homes, serializer: AsmArSerializer).as_json, mode: :compat)
+
+
+Rails request log
+Started GET "/homes.json?via=asm_execute_oj&limit=100&bob=8d91aa5ed4697088c7cac5fde09d467c" for ::1 at 2020-05-16 13:34:19 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"asm_execute_oj", "limit"=>"100", "bob"=>"8d91aa5ed4697088c7cac5fde09d467c"}
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:47:in `index'
+Memory retained: 0mb
+Memory allocated: 3mb
+Completed 200 OK in 348ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 16737)
+Started GET "/homes.json?via=asm_execute_oj&limit=100&bob=8d91aa5ed4697088c7cac5fde09d467c" for ::1 at 2020-05-16 13:34:19 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"asm_execute_oj", "limit"=>"100", "bob"=>"8d91aa5ed4697088c7cac5fde09d467c"}
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:47:in `index'
+Memory retained: 0mb
+Memory allocated: 3mb
+Completed 200 OK in 347ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 16781)
+Started GET "/homes.json?via=asm_execute_oj&limit=100&bob=8d91aa5ed4697088c7cac5fde09d467c" for ::1 at 2020-05-16 13:34:19 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"asm_execute_oj", "limit"=>"100", "bob"=>"8d91aa5ed4697088c7cac5fde09d467c"}
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:47:in `index'
+Memory retained: 0mb
+Memory allocated: 3mb
+Completed 200 OK in 347ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 16737)
+Started GET "/homes.json?via=asm_execute_oj&limit=100&bob=8d91aa5ed4697088c7cac5fde09d467c" for ::1 at 2020-05-16 13:34:20 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"asm_execute_oj", "limit"=>"100", "bob"=>"8d91aa5ed4697088c7cac5fde09d467c"}
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:47:in `index'
+Memory retained: 0mb
+Memory allocated: 3mb
+Completed 200 OK in 352ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 16737)
+Started GET "/homes.json?via=asm_execute_oj&limit=100&bob=8d91aa5ed4697088c7cac5fde09d467c" for ::1 at 2020-05-16 13:34:20 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"asm_execute_oj", "limit"=>"100", "bob"=>"8d91aa5ed4697088c7cac5fde09d467c"}
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:47:in `index'
+Memory retained: 0mb
+Memory allocated: 3mb
+Completed 200 OK in 349ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 16738)

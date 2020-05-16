@@ -1,0 +1,88 @@
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /homes.json?via=fast_oj&limit=100&bob=028060d3022e6cd8212926298eb2b512
+Document Length:        10710 bytes
+
+Concurrency Level:      1
+Time taken for tests:   1.848 seconds
+Complete requests:      5
+Failed requests:        0
+Total transferred:      55795 bytes
+HTML transferred:       53550 bytes
+Requests per second:    2.71 [#/sec] (mean)
+Time per request:       369.614 [ms] (mean)
+Time per request:       369.614 [ms] (mean, across all concurrent requests)
+Transfer rate:          29.48 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:   366  369   2.6    370     373
+Waiting:      366  369   2.6    370     373
+Total:        366  370   2.6    370     373
+
+Percentage of the requests served within a certain time (ms)
+  50%    369
+  66%    371
+  75%    371
+  80%    373
+  90%    373
+  95%    373
+  98%    373
+  99%    373
+ 100%    373 (longest request)
+
+Rails response builder
+return render json: Oj.dump(Fast::HomeSerializer.new(homes).serializable_hash, mode: :compat)
+
+
+Rails request log
+Started GET "/homes.json?via=fast_oj&limit=100&bob=028060d3022e6cd8212926298eb2b512" for ::1 at 2020-05-16 13:34:27 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_oj", "limit"=>"100", "bob"=>"028060d3022e6cd8212926298eb2b512"}
+  [1m[36mHome Load (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 100]]
+  ↳ app/controllers/homes_controller.rb:52:in `index'
+Memory retained: 0mb
+Memory allocated: 5mb
+Completed 200 OK in 371ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 26345)
+Started GET "/homes.json?via=fast_oj&limit=100&bob=028060d3022e6cd8212926298eb2b512" for ::1 at 2020-05-16 13:34:28 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_oj", "limit"=>"100", "bob"=>"028060d3022e6cd8212926298eb2b512"}
+  [1m[36mHome Load (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 100]]
+  ↳ app/controllers/homes_controller.rb:52:in `index'
+Memory retained: 0mb
+Memory allocated: 5mb
+Completed 200 OK in 366ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 26294)
+Started GET "/homes.json?via=fast_oj&limit=100&bob=028060d3022e6cd8212926298eb2b512" for ::1 at 2020-05-16 13:34:28 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_oj", "limit"=>"100", "bob"=>"028060d3022e6cd8212926298eb2b512"}
+  [1m[36mHome Load (0.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 100]]
+  ↳ app/controllers/homes_controller.rb:52:in `index'
+Memory retained: 0mb
+Memory allocated: 5mb
+Completed 200 OK in 364ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 26262)
+Started GET "/homes.json?via=fast_oj&limit=100&bob=028060d3022e6cd8212926298eb2b512" for ::1 at 2020-05-16 13:34:28 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_oj", "limit"=>"100", "bob"=>"028060d3022e6cd8212926298eb2b512"}
+  [1m[36mHome Load (0.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 100]]
+  ↳ app/controllers/homes_controller.rb:52:in `index'
+Memory retained: 0mb
+Memory allocated: 5mb
+Completed 200 OK in 366ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 26262)
+Started GET "/homes.json?via=fast_oj&limit=100&bob=028060d3022e6cd8212926298eb2b512" for ::1 at 2020-05-16 13:34:29 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_oj", "limit"=>"100", "bob"=>"028060d3022e6cd8212926298eb2b512"}
+  [1m[36mHome Load (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 100]]
+  ↳ app/controllers/homes_controller.rb:52:in `index'
+Memory retained: 0mb
+Memory allocated: 5mb
+Completed 200 OK in 368ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 26294)

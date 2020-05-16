@@ -1,0 +1,130 @@
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /homes.json?via=fast_execute&limit=100&bob=cb08b2600030fab33b5af8d0e637aaeb
+Document Length:        153241 bytes
+
+Concurrency Level:      1
+Time taken for tests:   1.591 seconds
+Complete requests:      5
+Failed requests:        0
+Non-2xx responses:      5
+Total transferred:      767475 bytes
+HTML transferred:       766205 bytes
+Requests per second:    3.14 [#/sec] (mean)
+Time per request:       318.185 [ms] (mean)
+Time per request:       318.185 [ms] (mean, across all concurrent requests)
+Transfer rate:          471.10 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:   289  318  39.2    308     386
+Waiting:      289  318  39.2    308     386
+Total:        289  318  39.2    308     387
+
+Percentage of the requests served within a certain time (ms)
+  50%    304
+  66%    312
+  75%    312
+  80%    387
+  90%    387
+  95%    387
+  98%    387
+  99%    387
+ 100%    387 (longest request)
+
+Rails response builder
+homes = Home.connection.execute(homes.to_sql)
+      return render json: homes.to_a.map { |home| Fast::HomeSerializer.new(home).serializable_hash }.to_json
+
+
+Rails request log
+Started GET "/homes.json?via=fast_execute&limit=100&bob=cb08b2600030fab33b5af8d0e637aaeb" for ::1 at 2020-05-16 13:34:51 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_execute", "limit"=>"100", "bob"=>"cb08b2600030fab33b5af8d0e637aaeb"}
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:64:in `index'
+Completed 500 Internal Server Error in 158ms (ActiveRecord: 0.5ms | Allocations: 1289)
+
+
+  
+FastJsonapi::MandatoryField (id is a mandatory field in the jsonapi spec):
+  
+app/controllers/homes_controller.rb:65:in `block in index'
+app/controllers/homes_controller.rb:65:in `map'
+app/controllers/homes_controller.rb:65:in `index'
+app/controllers/homes_controller.rb:95:in `block in benchmark!'
+app/controllers/homes_controller.rb:94:in `benchmark!'
+Started GET "/homes.json?via=fast_execute&limit=100&bob=cb08b2600030fab33b5af8d0e637aaeb" for ::1 at 2020-05-16 13:34:51 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_execute", "limit"=>"100", "bob"=>"cb08b2600030fab33b5af8d0e637aaeb"}
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:64:in `index'
+Completed 500 Internal Server Error in 179ms (ActiveRecord: 0.5ms | Allocations: 1288)
+
+
+  
+FastJsonapi::MandatoryField (id is a mandatory field in the jsonapi spec):
+  
+app/controllers/homes_controller.rb:65:in `block in index'
+app/controllers/homes_controller.rb:65:in `map'
+app/controllers/homes_controller.rb:65:in `index'
+app/controllers/homes_controller.rb:95:in `block in benchmark!'
+app/controllers/homes_controller.rb:94:in `benchmark!'
+Started GET "/homes.json?via=fast_execute&limit=100&bob=cb08b2600030fab33b5af8d0e637aaeb" for ::1 at 2020-05-16 13:34:51 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_execute", "limit"=>"100", "bob"=>"cb08b2600030fab33b5af8d0e637aaeb"}
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:64:in `index'
+Completed 500 Internal Server Error in 203ms (ActiveRecord: 0.6ms | Allocations: 1288)
+
+
+  
+FastJsonapi::MandatoryField (id is a mandatory field in the jsonapi spec):
+  
+app/controllers/homes_controller.rb:65:in `block in index'
+app/controllers/homes_controller.rb:65:in `map'
+app/controllers/homes_controller.rb:65:in `index'
+app/controllers/homes_controller.rb:95:in `block in benchmark!'
+app/controllers/homes_controller.rb:94:in `benchmark!'
+Started GET "/homes.json?via=fast_execute&limit=100&bob=cb08b2600030fab33b5af8d0e637aaeb" for ::1 at 2020-05-16 13:34:52 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_execute", "limit"=>"100", "bob"=>"cb08b2600030fab33b5af8d0e637aaeb"}
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:64:in `index'
+Completed 500 Internal Server Error in 165ms (ActiveRecord: 0.7ms | Allocations: 1288)
+
+
+  
+FastJsonapi::MandatoryField (id is a mandatory field in the jsonapi spec):
+  
+app/controllers/homes_controller.rb:65:in `block in index'
+app/controllers/homes_controller.rb:65:in `map'
+app/controllers/homes_controller.rb:65:in `index'
+app/controllers/homes_controller.rb:95:in `block in benchmark!'
+app/controllers/homes_controller.rb:94:in `benchmark!'
+Started GET "/homes.json?via=fast_execute&limit=100&bob=cb08b2600030fab33b5af8d0e637aaeb" for ::1 at 2020-05-16 13:34:52 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_execute", "limit"=>"100", "bob"=>"cb08b2600030fab33b5af8d0e637aaeb"}
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ app/controllers/homes_controller.rb:64:in `index'
+Completed 500 Internal Server Error in 169ms (ActiveRecord: 0.5ms | Allocations: 1291)
+
+
+  
+FastJsonapi::MandatoryField (id is a mandatory field in the jsonapi spec):
+  
+app/controllers/homes_controller.rb:65:in `block in index'
+app/controllers/homes_controller.rb:65:in `map'
+app/controllers/homes_controller.rb:65:in `index'
+app/controllers/homes_controller.rb:95:in `block in benchmark!'
+app/controllers/homes_controller.rb:94:in `benchmark!'

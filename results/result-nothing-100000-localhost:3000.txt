@@ -1,0 +1,16 @@
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)...
+Rails response builder
+return render json: homes, adapter: nil, serializer: nil
+
+
+Rails request log
+Started GET "/homes.json?via=nothing&limit=100000&bob=4cb9c48bb74461f07491d6d878514c58" for ::1 at 2020-05-16 13:52:04 -0400
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing", "limit"=>"100000", "bob"=>"4cb9c48bb74461f07491d6d878514c58"}
+[active_model_serializers]   [1m[36mHome Load (105.0ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 100000]]
+[active_model_serializers]   ↳ app/controllers/homes_controller.rb:26:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Home::ActiveRecord_Relation (12863.45ms)
