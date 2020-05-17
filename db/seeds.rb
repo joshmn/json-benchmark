@@ -11,5 +11,7 @@ HOMES.times do |i|
   records << { latitude: rand(-90.0...90.0), longitude: rand(-180.0...180.0), created_at: Time.now, updated_at: Time.now }
 end
 
-Home.insert_all(records)
+Rails.logger.silence do
+  Home.insert_all(records)
+end
 puts "Homes: #{Home.count}"
