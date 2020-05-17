@@ -71,6 +71,7 @@ def self.run(options)
   results[:runs][0].keys.each do |key|
     results[:averages][key] = (results[:runs].map { |result| result[key] }.inject(&:+).to_d / results[:runs].size.to_d).to_s
   end
+  results[:builder] = response_builder
   results
 end
 
@@ -94,10 +95,10 @@ headers = false
 file = CSV.generate do |csv|
   results_table.each do |k,v|
     unless headers
-      csv << ["Name", *v[:averages].keys]
+      csv << ["Name", *v[:averages].keys, "Builder"]
       headers = true
     end
-    csv << [k, v[:averages].values].flatten
+    csv << [k, v[:averages].values, v[:builder]].flatten
   end
 end
 
