@@ -1,4 +1,8 @@
-HOMES = 100_000
+if ENV['TIMES']
+  HOMES = ENV['TIMES'].to_i
+else
+  HOMES = 100_000
+end
 
 puts "Currently there are #{Home.count} homes. Making #{HOMES}."
 
