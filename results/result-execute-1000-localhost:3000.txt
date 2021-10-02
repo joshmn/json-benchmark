@@ -1,0 +1,83 @@
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /homes.json?via=execute&limit=1000&bob=c21d67a8e1f56153a41a0aa233c33359
+Document Length:        59195 bytes
+
+Concurrency Level:      1
+Time taken for tests:   1.332 seconds
+Complete requests:      5
+Failed requests:        0
+Total transferred:      298220 bytes
+HTML transferred:       295975 bytes
+Requests per second:    3.75 [#/sec] (mean)
+Time per request:       266.349 [ms] (mean)
+Time per request:       266.349 [ms] (mean, across all concurrent requests)
+Transfer rate:          218.68 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:   266  266   0.3    266     266
+Waiting:      266  266   0.2    266     266
+Total:        266  266   0.3    266     267
+
+Percentage of the requests served within a certain time (ms)
+  50%    266
+  66%    266
+  75%    266
+  80%    267
+  90%    267
+  95%    267
+  98%    267
+  99%    267
+ 100%    267 (longest request)
+
+Rails response builder
+return render json: Home.connection.execute(homes.to_sql).to_a.to_json, adapter: nil
+
+
+Rails request log
+Started GET "/homes.json?via=execute&limit=1000&bob=c21d67a8e1f56153a41a0aa233c33359" for ::1 at 2021-10-02 11:08:52 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"execute", "limit"=>"1000", "bob"=>"c21d67a8e1f56153a41a0aa233c33359"}
+  [1m[35m (6.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 1000[0m
+  ↳ app/controllers/homes_controller.rb:75:in `index'
+MEMSTAT: 5 / 188
+Completed 200 OK in 264ms (Views: 0.1ms | ActiveRecord: 6.6ms | Allocations: 128149)
+Started GET "/homes.json?via=execute&limit=1000&bob=c21d67a8e1f56153a41a0aa233c33359" for ::1 at 2021-10-02 11:08:52 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"execute", "limit"=>"1000", "bob"=>"c21d67a8e1f56153a41a0aa233c33359"}
+  [1m[35m (6.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 1000[0m
+  ↳ app/controllers/homes_controller.rb:75:in `index'
+MEMSTAT: 5 / 188
+Completed 200 OK in 264ms (Views: 0.1ms | ActiveRecord: 6.6ms | Allocations: 124206)
+Started GET "/homes.json?via=execute&limit=1000&bob=c21d67a8e1f56153a41a0aa233c33359" for ::1 at 2021-10-02 11:08:53 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"execute", "limit"=>"1000", "bob"=>"c21d67a8e1f56153a41a0aa233c33359"}
+  [1m[35m (6.7ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 1000[0m
+  ↳ app/controllers/homes_controller.rb:75:in `index'
+MEMSTAT: 5 / 188
+Completed 200 OK in 264ms (Views: 0.1ms | ActiveRecord: 6.7ms | Allocations: 124070)
+Started GET "/homes.json?via=execute&limit=1000&bob=c21d67a8e1f56153a41a0aa233c33359" for ::1 at 2021-10-02 11:08:53 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"execute", "limit"=>"1000", "bob"=>"c21d67a8e1f56153a41a0aa233c33359"}
+  [1m[35m (6.9ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 1000[0m
+  ↳ app/controllers/homes_controller.rb:75:in `index'
+MEMSTAT: 5 / 188
+Completed 200 OK in 264ms (Views: 0.1ms | ActiveRecord: 6.9ms | Allocations: 124070)
+Started GET "/homes.json?via=execute&limit=1000&bob=c21d67a8e1f56153a41a0aa233c33359" for ::1 at 2021-10-02 11:08:53 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"execute", "limit"=>"1000", "bob"=>"c21d67a8e1f56153a41a0aa233c33359"}
+  [1m[35m (6.7ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 1000[0m
+  ↳ app/controllers/homes_controller.rb:75:in `index'
+MEMSTAT: 5 / 188
+Completed 200 OK in 265ms (Views: 0.1ms | ActiveRecord: 6.7ms | Allocations: 124210)

@@ -1,0 +1,93 @@
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /homes.json?via=fast_map&limit=1000&bob=8c817d3b6ad8c10850188a970cf98bee
+Document Length:        107851 bytes
+
+Concurrency Level:      1
+Time taken for tests:   2.744 seconds
+Complete requests:      5
+Failed requests:        0
+Total transferred:      541500 bytes
+HTML transferred:       539255 bytes
+Requests per second:    1.82 [#/sec] (mean)
+Time per request:       548.734 [ms] (mean)
+Time per request:       548.734 [ms] (mean, across all concurrent requests)
+Transfer rate:          192.74 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       0
+Processing:   540  548   6.7    549     558
+Waiting:      539  548   6.8    549     558
+Total:        540  549   6.6    550     558
+
+Percentage of the requests served within a certain time (ms)
+  50%    548
+  66%    552
+  75%    552
+  80%    558
+  90%    558
+  95%    558
+  98%    558
+  99%    558
+ 100%    558 (longest request)
+
+Rails response builder
+return render json: homes.map { |home| Fast::HomeSerializer.new(home).serializable_hash }
+
+
+Rails request log
+Started GET "/homes.json?via=fast_map&limit=1000&bob=8c817d3b6ad8c10850188a970cf98bee" for ::1 at 2021-10-02 11:08:41 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_map", "limit"=>"1000", "bob"=>"8c817d3b6ad8c10850188a970cf98bee"}
+  [1m[36mHome Load (6.3ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:55:in `map'
+No serializer found for resource: {:data=>{:id=>"1", :type=>:home, :attributes=>{:id=>1, :latitude=>0.8480071e1, :longitude=>0.71029739e2}}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (40.03ms)
+MEMSTAT: 23 / 783
+Completed 200 OK in 556ms (Views: 40.5ms | ActiveRecord: 6.3ms | Allocations: 410785)
+Started GET "/homes.json?via=fast_map&limit=1000&bob=8c817d3b6ad8c10850188a970cf98bee" for ::1 at 2021-10-02 11:08:41 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_map", "limit"=>"1000", "bob"=>"8c817d3b6ad8c10850188a970cf98bee"}
+  [1m[36mHome Load (6.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:55:in `map'
+No serializer found for resource: {:data=>{:id=>"1", :type=>:home, :attributes=>{:id=>1, :latitude=>0.8480071e1, :longitude=>0.71029739e2}}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (38.88ms)
+MEMSTAT: 22 / 746
+Completed 200 OK in 544ms (Views: 39.2ms | ActiveRecord: 6.6ms | Allocations: 387048)
+Started GET "/homes.json?via=fast_map&limit=1000&bob=8c817d3b6ad8c10850188a970cf98bee" for ::1 at 2021-10-02 11:08:42 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_map", "limit"=>"1000", "bob"=>"8c817d3b6ad8c10850188a970cf98bee"}
+  [1m[36mHome Load (6.7ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:55:in `map'
+No serializer found for resource: {:data=>{:id=>"1", :type=>:home, :attributes=>{:id=>1, :latitude=>0.8480071e1, :longitude=>0.71029739e2}}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (39.08ms)
+MEMSTAT: 22 / 757
+Completed 200 OK in 549ms (Views: 39.4ms | ActiveRecord: 6.7ms | Allocations: 394214)
+Started GET "/homes.json?via=fast_map&limit=1000&bob=8c817d3b6ad8c10850188a970cf98bee" for ::1 at 2021-10-02 11:08:42 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_map", "limit"=>"1000", "bob"=>"8c817d3b6ad8c10850188a970cf98bee"}
+  [1m[36mHome Load (3.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:55:in `map'
+No serializer found for resource: {:data=>{:id=>"1", :type=>:home, :attributes=>{:id=>1, :latitude=>0.8480071e1, :longitude=>0.71029739e2}}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (38.69ms)
+MEMSTAT: 22 / 746
+Completed 200 OK in 538ms (Views: 39.0ms | ActiveRecord: 3.2ms | Allocations: 387056)
+Started GET "/homes.json?via=fast_map&limit=1000&bob=8c817d3b6ad8c10850188a970cf98bee" for ::1 at 2021-10-02 11:08:43 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast_map", "limit"=>"1000", "bob"=>"8c817d3b6ad8c10850188a970cf98bee"}
+  [1m[36mHome Load (6.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:55:in `map'
+No serializer found for resource: {:data=>{:id=>"1", :type=>:home, :attributes=>{:id=>1, :latitude=>0.8480071e1, :longitude=>0.71029739e2}}}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (39.01ms)
+MEMSTAT: 22 / 752
+Completed 200 OK in 545ms (Views: 39.3ms | ActiveRecord: 6.5ms | Allocations: 390543)

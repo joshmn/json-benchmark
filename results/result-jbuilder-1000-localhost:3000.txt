@@ -1,0 +1,83 @@
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /homes.json?via=jbuilder&limit=1000&bob=5afab6c5ba53283d8c8bfc0f469d1caa
+Document Length:        58958 bytes
+
+Concurrency Level:      1
+Time taken for tests:   1.768 seconds
+Complete requests:      5
+Failed requests:        0
+Total transferred:      297035 bytes
+HTML transferred:       294790 bytes
+Requests per second:    2.83 [#/sec] (mean)
+Time per request:       353.687 [ms] (mean)
+Time per request:       353.687 [ms] (mean, across all concurrent requests)
+Transfer rate:          164.03 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:   345  353   5.1    355     359
+Waiting:      345  353   5.1    355     358
+Total:        345  354   5.1    355     359
+
+Percentage of the requests served within a certain time (ms)
+  50%    355
+  66%    356
+  75%    356
+  80%    359
+  90%    359
+  95%    359
+  98%    359
+  99%    359
+ 100%    359 (longest request)
+
+Rails response builder
+return render json: Jbuilder.new { |json| json.array! homes, :id, :latitude, :longitude }.target!, adapter: nil, serializer: nil
+
+
+Rails request log
+Started GET "/homes.json?via=jbuilder&limit=1000&bob=5afab6c5ba53283d8c8bfc0f469d1caa" for ::1 at 2021-10-02 11:09:01 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder", "limit"=>"1000", "bob"=>"5afab6c5ba53283d8c8bfc0f469d1caa"}
+  [1m[36mHome Load (3.3ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:71:in `block in index'
+MEMSTAT: 17 / 347
+Completed 200 OK in 343ms (Views: 0.1ms | ActiveRecord: 3.3ms | Allocations: 202805)
+Started GET "/homes.json?via=jbuilder&limit=1000&bob=5afab6c5ba53283d8c8bfc0f469d1caa" for ::1 at 2021-10-02 11:09:02 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder", "limit"=>"1000", "bob"=>"5afab6c5ba53283d8c8bfc0f469d1caa"}
+  [1m[36mHome Load (6.7ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:71:in `block in index'
+MEMSTAT: 17 / 351
+Completed 200 OK in 356ms (Views: 0.1ms | ActiveRecord: 6.7ms | Allocations: 205760)
+Started GET "/homes.json?via=jbuilder&limit=1000&bob=5afab6c5ba53283d8c8bfc0f469d1caa" for ::1 at 2021-10-02 11:09:02 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder", "limit"=>"1000", "bob"=>"5afab6c5ba53283d8c8bfc0f469d1caa"}
+  [1m[36mHome Load (6.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:71:in `block in index'
+MEMSTAT: 17 / 347
+Completed 200 OK in 352ms (Views: 0.1ms | ActiveRecord: 6.6ms | Allocations: 202615)
+Started GET "/homes.json?via=jbuilder&limit=1000&bob=5afab6c5ba53283d8c8bfc0f469d1caa" for ::1 at 2021-10-02 11:09:02 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder", "limit"=>"1000", "bob"=>"5afab6c5ba53283d8c8bfc0f469d1caa"}
+  [1m[36mHome Load (6.9ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:71:in `block in index'
+MEMSTAT: 17 / 347
+Completed 200 OK in 353ms (Views: 0.1ms | ActiveRecord: 6.9ms | Allocations: 202545)
+Started GET "/homes.json?via=jbuilder&limit=1000&bob=5afab6c5ba53283d8c8bfc0f469d1caa" for ::1 at 2021-10-02 11:09:03 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder", "limit"=>"1000", "bob"=>"5afab6c5ba53283d8c8bfc0f469d1caa"}
+  [1m[36mHome Load (6.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:71:in `block in index'
+MEMSTAT: 17 / 347
+Completed 200 OK in 351ms (Views: 0.1ms | ActiveRecord: 6.4ms | Allocations: 202546)

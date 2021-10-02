@@ -14,6 +14,7 @@ class HomesController < ApplicationController
       'execute_map', 'execute_map_oj',
       'exec_query', 'exec_query_oj',
       'exec_query_map', 'exec_query_map_oj',
+      'jbuilder', 'jbuilder_map_oj',
       'pg']
 
   def index
@@ -66,6 +67,10 @@ class HomesController < ApplicationController
     when 'fast_execute_oj' # fix
       homes = Home.connection.execute(homes.to_sql)
       return render json: Oj.dump(homes.map { |home| Fast::HashSerializer.new(home).serializable_hash }, mode: :compat)
+    when 'jbuilder'
+      return render json: Jbuilder.new { |json| json.array! homes, :id, :latitude, :longitude }.target!, adapter: nil, serializer: nil
+    when 'jbuilder_map_oj'
+      return render json: Oj.dump(Jbuilder.new { |json| json.array! homes, :id, :latitude, :longitude }.target!, mode: :compat), adapter: nil, serializer: nil
     when 'execute'
       return render json: Home.connection.execute(homes.to_sql).to_a.to_json, adapter: nil
     when 'execute_oj'
@@ -85,6 +90,8 @@ class HomesController < ApplicationController
     when 'pg'
       query = "select json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (#{homes.to_sql}) home;"
       return render json: Home.connection.exec_query(query)[0]['json_agg'], adapter: nil, serializer: nil
+    else
+      render plain: "hi"
     end
   end
 

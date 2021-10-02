@@ -1,0 +1,83 @@
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /homes.json?via=jbuilder_map_oj&limit=1000&bob=6e42a59a89af0bb643bccbdf8f19f4fa
+Document Length:        68960 bytes
+
+Concurrency Level:      1
+Time taken for tests:   1.775 seconds
+Complete requests:      5
+Failed requests:        0
+Total transferred:      347045 bytes
+HTML transferred:       344800 bytes
+Requests per second:    2.82 [#/sec] (mean)
+Time per request:       355.090 [ms] (mean)
+Time per request:       355.090 [ms] (mean, across all concurrent requests)
+Transfer rate:          190.89 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:   353  355   2.1    354     358
+Waiting:      353  355   2.1    354     358
+Total:        354  355   2.1    355     359
+
+Percentage of the requests served within a certain time (ms)
+  50%    354
+  66%    355
+  75%    355
+  80%    359
+  90%    359
+  95%    359
+  98%    359
+  99%    359
+ 100%    359 (longest request)
+
+Rails response builder
+return render json: Oj.dump(Jbuilder.new { |json| json.array! homes, :id, :latitude, :longitude }.target!, mode: :compat), adapter: nil, serializer: nil
+
+
+Rails request log
+Started GET "/homes.json?via=jbuilder_map_oj&limit=1000&bob=6e42a59a89af0bb643bccbdf8f19f4fa" for ::1 at 2021-10-02 11:09:03 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder_map_oj", "limit"=>"1000", "bob"=>"6e42a59a89af0bb643bccbdf8f19f4fa"}
+  [1m[36mHome Load (6.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:73:in `block in index'
+MEMSTAT: 18 / 354
+Completed 200 OK in 352ms (Views: 0.1ms | ActiveRecord: 6.5ms | Allocations: 202651)
+Started GET "/homes.json?via=jbuilder_map_oj&limit=1000&bob=6e42a59a89af0bb643bccbdf8f19f4fa" for ::1 at 2021-10-02 11:09:03 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder_map_oj", "limit"=>"1000", "bob"=>"6e42a59a89af0bb643bccbdf8f19f4fa"}
+  [1m[36mHome Load (6.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:73:in `block in index'
+MEMSTAT: 18 / 354
+Completed 200 OK in 351ms (Views: 0.1ms | ActiveRecord: 6.5ms | Allocations: 202555)
+Started GET "/homes.json?via=jbuilder_map_oj&limit=1000&bob=6e42a59a89af0bb643bccbdf8f19f4fa" for ::1 at 2021-10-02 11:09:04 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder_map_oj", "limit"=>"1000", "bob"=>"6e42a59a89af0bb643bccbdf8f19f4fa"}
+  [1m[36mHome Load (7.0ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:73:in `block in index'
+MEMSTAT: 18 / 356
+Completed 200 OK in 356ms (Views: 0.1ms | ActiveRecord: 7.0ms | Allocations: 204610)
+Started GET "/homes.json?via=jbuilder_map_oj&limit=1000&bob=6e42a59a89af0bb643bccbdf8f19f4fa" for ::1 at 2021-10-02 11:09:04 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder_map_oj", "limit"=>"1000", "bob"=>"6e42a59a89af0bb643bccbdf8f19f4fa"}
+  [1m[36mHome Load (6.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:73:in `block in index'
+MEMSTAT: 18 / 354
+Completed 200 OK in 353ms (Views: 0.1ms | ActiveRecord: 6.5ms | Allocations: 202560)
+Started GET "/homes.json?via=jbuilder_map_oj&limit=1000&bob=6e42a59a89af0bb643bccbdf8f19f4fa" for ::1 at 2021-10-02 11:09:04 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder_map_oj", "limit"=>"1000", "bob"=>"6e42a59a89af0bb643bccbdf8f19f4fa"}
+  [1m[36mHome Load (6.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 1000]]
+  ↳ app/controllers/homes_controller.rb:73:in `block in index'
+MEMSTAT: 18 / 354
+Completed 200 OK in 352ms (Views: 0.1ms | ActiveRecord: 6.4ms | Allocations: 202554)

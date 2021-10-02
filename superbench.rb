@@ -36,12 +36,13 @@ if options[:all]
 end
 
 options[:host] ||= 'localhost:3000'
+puts options.inspect
 def self.run(options)
   puts "On #{options.inspect}"
   random = SecureRandom.hex
   query = "homes.json?via=#{options[:kind]}&limit=#{options[:limit]}&bob=#{random}"
   filename = "results/result-#{options[:kind]}-#{options[:limit]}-#{options[:host]}.txt"
-  system("ab -n 5 'http://#{options[:host]}/#{query}' > #{filename}")
+  system("ab -n 5 -s 120 'http://#{options[:host]}/#{query}' > #{filename}")
   if options[:host].index("heroku")
     `heroku logs -n 1000 > #{random}-log.txt`
     log = `sed -n '/#{query}/,/Completed 200/p' #{random}-log.txt`
@@ -51,7 +52,6 @@ def self.run(options)
   end
   response_builder = File.read('app/controllers/homes_controller.rb').split("when '#{options[:kind]}'", 2)[1].split("when")[0].split(" end")[0].strip
   open(filename, 'a') { |f| f.puts "\nRails response builder\n#{response_builder}\n\n\nRails request log\n#{log}" }
-#  332ms (Views: 4.7ms | ActiveRecord: 0.5ms | Allocations: 21032)
   results = {runs: [], averages: {}}
   log.lines.select { |line| line.index("Completed 200 OK") }.each do |line|
     total = line.split(" in ", 2)[1].split("(", 2)[0].strip
