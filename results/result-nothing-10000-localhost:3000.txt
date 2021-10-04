@@ -1,4 +1,4 @@
-This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
@@ -9,81 +9,67 @@ Server Software:
 Server Hostname:        localhost
 Server Port:            3000
 
-Document Path:          /homes.json?via=nothing&limit=10000&bob=0e762e2e4926b6e8811f866179da9c18
-Document Length:        630393 bytes
+Document Path:          /homes.json?via=nothing&limit=10000&bob=63356824490f0253703a9f9632e17aa0
+Document Length:        599678 bytes
 
 Concurrency Level:      1
-Time taken for tests:   22.685 seconds
-Complete requests:      5
-Failed requests:        4
-   (Connect: 0, Receive: 0, Length: 4, Exceptions: 0)
-Total transferred:      3155109 bytes
-HTML transferred:       3152864 bytes
-Requests per second:    0.22 [#/sec] (mean)
-Time per request:       4537.018 [ms] (mean)
-Time per request:       4537.018 [ms] (mean, across all concurrent requests)
-Transfer rate:          135.82 [Kbytes/sec] received
+Time taken for tests:   9.733 seconds
+Complete requests:      3
+Failed requests:        0
+Total transferred:      1800381 bytes
+HTML transferred:       1799034 bytes
+Requests per second:    0.31 [#/sec] (mean)
+Time per request:       3244.220 [ms] (mean)
+Time per request:       3244.220 [ms] (mean, across all concurrent requests)
+Transfer rate:          180.65 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
 Connect:        0    0   0.0      0       0
-Processing:  4188 4537 235.3   4640    4768
-Waiting:     4187 4536 235.3   4640    4768
-Total:       4188 4537 235.3   4641    4768
+Processing:  3227 3244  23.0   3252    3270
+Waiting:     3227 3243  23.0   3252    3270
+Total:       3227 3244  23.0   3253    3270
 
 Percentage of the requests served within a certain time (ms)
-  50%   4550
-  66%   4731
-  75%   4731
-  80%   4768
-  90%   4768
-  95%   4768
-  98%   4768
-  99%   4768
- 100%   4768 (longest request)
+  50%   3235
+  66%   3235
+  75%   3270
+  80%   3270
+  90%   3270
+  95%   3270
+  98%   3270
+  99%   3270
+ 100%   3270 (longest request)
 
-Rails response builder
-return render json: homes, adapter: nil, serializer: nil
+Description
+Vanilla ActiveModel#to_json using OJ
 
 
 Rails request log
-Started GET "/homes.json?via=nothing&limit=10000&bob=0e762e2e4926b6e8811f866179da9c18" for ::1 at 2020-05-16 14:02:10 -0400
+Started GET "/homes.json?via=nothing&limit=10000&bob=63356824490f0253703a9f9632e17aa0" for ::1 at 2021-10-03 12:55:50 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"nothing", "limit"=>"10000", "bob"=>"0e762e2e4926b6e8811f866179da9c18"}
-[active_model_serializers]   [1m[36mHome Load (18.0ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
-[active_model_serializers]   ↳ app/controllers/homes_controller.rb:26:in `index'
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Home::ActiveRecord_Relation (743.07ms)
-MEMSTAT: 182 / 5685
-Completed 200 OK in 4181ms (Views: 725.5ms | ActiveRecord: 18.0ms | Allocations: 2437723)
-Started GET "/homes.json?via=nothing&limit=10000&bob=0e762e2e4926b6e8811f866179da9c18" for ::1 at 2020-05-16 14:02:14 -0400
+  Parameters: {"via"=>"nothing", "limit"=>"10000", "bob"=>"63356824490f0253703a9f9632e17aa0"}
+  [1m[36mHome Load (30.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:28:in `block in <main>'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (187.54ms)
+MEMSTAT: 740689 / 56043635
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 3268ms (Views: 187.9ms | ActiveRecord: 30.4ms | Allocations: 2561082)
+Started GET "/homes.json?via=nothing&limit=10000&bob=63356824490f0253703a9f9632e17aa0" for ::1 at 2021-10-03 12:55:53 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"nothing", "limit"=>"10000", "bob"=>"0e762e2e4926b6e8811f866179da9c18"}
-[active_model_serializers]   [1m[36mHome Load (19.8ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
-[active_model_serializers]   ↳ app/controllers/homes_controller.rb:26:in `index'
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Home::ActiveRecord_Relation (723.72ms)
-MEMSTAT: 182 / 5685
-Completed 200 OK in 4441ms (Views: 704.4ms | ActiveRecord: 19.8ms | Allocations: 2437687)
-Started GET "/homes.json?via=nothing&limit=10000&bob=0e762e2e4926b6e8811f866179da9c18" for ::1 at 2020-05-16 14:02:18 -0400
+  Parameters: {"via"=>"nothing", "limit"=>"10000", "bob"=>"63356824490f0253703a9f9632e17aa0"}
+  [1m[36mHome Load (26.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:28:in `block in <main>'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (177.79ms)
+MEMSTAT: 740692 / 56043955
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 3232ms (Views: 178.1ms | ActiveRecord: 26.6ms | Allocations: 2557868)
+Started GET "/homes.json?via=nothing&limit=10000&bob=63356824490f0253703a9f9632e17aa0" for ::1 at 2021-10-03 12:55:57 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"nothing", "limit"=>"10000", "bob"=>"0e762e2e4926b6e8811f866179da9c18"}
-[active_model_serializers]   [1m[36mHome Load (14.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
-[active_model_serializers]   ↳ app/controllers/homes_controller.rb:26:in `index'
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Home::ActiveRecord_Relation (881.01ms)
-MEMSTAT: 182 / 5685
-Completed 200 OK in 4762ms (Views: 866.9ms | ActiveRecord: 14.6ms | Allocations: 2437576)
-Started GET "/homes.json?via=nothing&limit=10000&bob=0e762e2e4926b6e8811f866179da9c18" for ::1 at 2020-05-16 14:02:23 -0400
-Processing by HomesController#index as JSON
-  Parameters: {"via"=>"nothing", "limit"=>"10000", "bob"=>"0e762e2e4926b6e8811f866179da9c18"}
-[active_model_serializers]   [1m[36mHome Load (14.3ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
-[active_model_serializers]   ↳ app/controllers/homes_controller.rb:26:in `index'
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Home::ActiveRecord_Relation (777.18ms)
-MEMSTAT: 182 / 5685
-Completed 200 OK in 4545ms (Views: 763.4ms | ActiveRecord: 14.3ms | Allocations: 2437579)
-Started GET "/homes.json?via=nothing&limit=10000&bob=0e762e2e4926b6e8811f866179da9c18" for ::1 at 2020-05-16 14:02:28 -0400
-Processing by HomesController#index as JSON
-  Parameters: {"via"=>"nothing", "limit"=>"10000", "bob"=>"0e762e2e4926b6e8811f866179da9c18"}
-[active_model_serializers]   [1m[36mHome Load (13.7ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
-[active_model_serializers]   ↳ app/controllers/homes_controller.rb:26:in `index'
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Home::ActiveRecord_Relation (806.25ms)
-MEMSTAT: 182 / 5685
-Completed 200 OK in 4726ms (Views: 793.0ms | ActiveRecord: 13.7ms | Allocations: 2437563)
+  Parameters: {"via"=>"nothing", "limit"=>"10000", "bob"=>"63356824490f0253703a9f9632e17aa0"}
+  [1m[36mHome Load (28.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:28:in `block in <main>'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (173.86ms)
+MEMSTAT: 740774 / 56048091
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 3225ms (Views: 174.2ms | ActiveRecord: 28.4ms | Allocations: 2558139)

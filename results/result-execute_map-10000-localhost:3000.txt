@@ -1,4 +1,4 @@
-This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
@@ -9,76 +9,64 @@ Server Software:
 Server Hostname:        localhost
 Server Port:            3000
 
-Document Path:          /homes.json?via=execute_map&limit=10000&bob=ef35c51d45d1810d7dfda9696b2b3a1c
-Document Length:        632848 bytes
+Document Path:          /homes.json?via=execute_map&limit=10000&bob=01b2105ef3c808924f42a13e281f3355
+Document Length:        601819 bytes
 
 Concurrency Level:      1
-Time taken for tests:   13.102 seconds
-Complete requests:      5
-Failed requests:        4
-   (Connect: 0, Receive: 0, Length: 4, Exceptions: 0)
-Total transferred:      3166221 bytes
-HTML transferred:       3163976 bytes
-Requests per second:    0.38 [#/sec] (mean)
-Time per request:       2620.341 [ms] (mean)
-Time per request:       2620.341 [ms] (mean, across all concurrent requests)
-Transfer rate:          236.00 [Kbytes/sec] received
+Time taken for tests:   4.545 seconds
+Complete requests:      3
+Failed requests:        0
+Total transferred:      1806804 bytes
+HTML transferred:       1805457 bytes
+Requests per second:    0.66 [#/sec] (mean)
+Time per request:       1514.893 [ms] (mean)
+Time per request:       1514.893 [ms] (mean, across all concurrent requests)
+Transfer rate:          388.25 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
 Connect:        0    0   0.0      0       0
-Processing:  2518 2620 127.0   2619    2828
-Waiting:     2517 2620 127.0   2618    2827
-Total:       2518 2620 127.0   2619    2828
+Processing:  1510 1515   6.7   1517    1522
+Waiting:     1510 1514   6.5   1516    1521
+Total:       1510 1515   6.7   1517    1523
 
 Percentage of the requests served within a certain time (ms)
-  50%   2605
-  66%   2633
-  75%   2633
-  80%   2828
-  90%   2828
-  95%   2828
-  98%   2828
-  99%   2828
- 100%   2828 (longest request)
+  50%   1512
+  66%   1512
+  75%   1523
+  80%   1523
+  90%   1523
+  95%   1523
+  98%   1523
+  99%   1523
+ 100%   1523 (longest request)
 
-Rails response builder
-return render json: Home.connection.execute(homes.to_sql).to_a.map { |home| {id: home['id'], latitude: home['latitude'], longitude: home['longitude'] } }.to_json, adapter: nil
+Description
+Array of hashes mapped from ActiveRecord.execute (no ActiveModel)
 
 
 Rails request log
-Started GET "/homes.json?via=execute_map&limit=10000&bob=ef35c51d45d1810d7dfda9696b2b3a1c" for ::1 at 2020-05-16 14:09:41 -0400
+Started GET "/homes.json?via=execute_map&limit=10000&bob=01b2105ef3c808924f42a13e281f3355" for ::1 at 2021-10-03 12:58:28 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"execute_map", "limit"=>"10000", "bob"=>"ef35c51d45d1810d7dfda9696b2b3a1c"}
-  [1m[35m (16.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
-  ↳ app/controllers/homes_controller.rb:74:in `index'
-MEMSTAT: 63 / 3405
-Completed 200 OK in 2513ms (Views: 0.2ms | ActiveRecord: 16.2ms | Allocations: 1495858)
-Started GET "/homes.json?via=execute_map&limit=10000&bob=ef35c51d45d1810d7dfda9696b2b3a1c" for ::1 at 2020-05-16 14:09:44 -0400
+  Parameters: {"via"=>"execute_map", "limit"=>"10000", "bob"=>"01b2105ef3c808924f42a13e281f3355"}
+  [1m[35m (28.0ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
+  ↳ config/initializers/strategies.rb:124:in `block in <main>'
+MEMSTAT: 360447 / 21440180
+RESPONSE BODY SIZE: 601819
+Completed 200 OK in 1519ms (Views: 0.2ms | ActiveRecord: 28.0ms | Allocations: 1319254)
+Started GET "/homes.json?via=execute_map&limit=10000&bob=01b2105ef3c808924f42a13e281f3355" for ::1 at 2021-10-03 12:58:29 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"execute_map", "limit"=>"10000", "bob"=>"ef35c51d45d1810d7dfda9696b2b3a1c"}
-  [1m[35m (21.3ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
-  ↳ app/controllers/homes_controller.rb:74:in `index'
-MEMSTAT: 63 / 3405
-Completed 200 OK in 2823ms (Views: 0.4ms | ActiveRecord: 21.3ms | Allocations: 1495839)
-Started GET "/homes.json?via=execute_map&limit=10000&bob=ef35c51d45d1810d7dfda9696b2b3a1c" for ::1 at 2020-05-16 14:09:47 -0400
+  Parameters: {"via"=>"execute_map", "limit"=>"10000", "bob"=>"01b2105ef3c808924f42a13e281f3355"}
+  [1m[35m (28.0ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
+  ↳ config/initializers/strategies.rb:124:in `block in <main>'
+MEMSTAT: 360447 / 21440180
+RESPONSE BODY SIZE: 601819
+Completed 200 OK in 1508ms (Views: 0.2ms | ActiveRecord: 28.0ms | Allocations: 1318013)
+Started GET "/homes.json?via=execute_map&limit=10000&bob=01b2105ef3c808924f42a13e281f3355" for ::1 at 2021-10-03 12:58:31 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"execute_map", "limit"=>"10000", "bob"=>"ef35c51d45d1810d7dfda9696b2b3a1c"}
-  [1m[35m (33.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
-  ↳ app/controllers/homes_controller.rb:74:in `index'
-MEMSTAT: 63 / 3405
-Completed 200 OK in 2600ms (Views: 0.2ms | ActiveRecord: 33.5ms | Allocations: 1495879)
-Started GET "/homes.json?via=execute_map&limit=10000&bob=ef35c51d45d1810d7dfda9696b2b3a1c" for ::1 at 2020-05-16 14:09:49 -0400
-Processing by HomesController#index as JSON
-  Parameters: {"via"=>"execute_map", "limit"=>"10000", "bob"=>"ef35c51d45d1810d7dfda9696b2b3a1c"}
-  [1m[35m (19.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
-  ↳ app/controllers/homes_controller.rb:74:in `index'
-MEMSTAT: 63 / 3405
-Completed 200 OK in 2513ms (Views: 0.2ms | ActiveRecord: 19.4ms | Allocations: 1495862)
-Started GET "/homes.json?via=execute_map&limit=10000&bob=ef35c51d45d1810d7dfda9696b2b3a1c" for ::1 at 2020-05-16 14:09:52 -0400
-Processing by HomesController#index as JSON
-  Parameters: {"via"=>"execute_map", "limit"=>"10000", "bob"=>"ef35c51d45d1810d7dfda9696b2b3a1c"}
-  [1m[35m (22.1ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
-  ↳ app/controllers/homes_controller.rb:74:in `index'
-MEMSTAT: 63 / 3405
-Completed 200 OK in 2628ms (Views: 0.2ms | ActiveRecord: 22.1ms | Allocations: 1495886)
+  Parameters: {"via"=>"execute_map", "limit"=>"10000", "bob"=>"01b2105ef3c808924f42a13e281f3355"}
+  [1m[35m (29.9ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
+  ↳ config/initializers/strategies.rb:124:in `block in <main>'
+MEMSTAT: 360447 / 21440180
+RESPONSE BODY SIZE: 601819
+Completed 200 OK in 1508ms (Views: 0.1ms | ActiveRecord: 29.9ms | Allocations: 1319511)

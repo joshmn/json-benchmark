@@ -1,4 +1,4 @@
-This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
@@ -9,87 +9,70 @@ Server Software:
 Server Hostname:        localhost
 Server Port:            3000
 
-Document Path:          /homes.json?via=fast_exec_query&limit=10000&bob=5a90fb06172b9f72b4ecf91aa6f851de
-Document Length:        632693 bytes
+Document Path:          /homes.json?via=fast_exec_query&limit=10000&bob=2f9b30cc5594f209befe30ada456cf57
+Document Length:        601819 bytes
 
 Concurrency Level:      1
-Time taken for tests:   13.017 seconds
-Complete requests:      5
-Failed requests:        4
-   (Connect: 0, Receive: 0, Length: 4, Exceptions: 0)
-Total transferred:      3166124 bytes
-HTML transferred:       3163879 bytes
-Requests per second:    0.38 [#/sec] (mean)
-Time per request:       2603.323 [ms] (mean)
-Time per request:       2603.323 [ms] (mean, across all concurrent requests)
-Transfer rate:          237.54 [Kbytes/sec] received
+Time taken for tests:   4.595 seconds
+Complete requests:      3
+Failed requests:        0
+Total transferred:      1806804 bytes
+HTML transferred:       1805457 bytes
+Requests per second:    0.65 [#/sec] (mean)
+Time per request:       1531.824 [ms] (mean)
+Time per request:       1531.824 [ms] (mean, across all concurrent requests)
+Transfer rate:          383.96 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    0   0.1      0       0
-Processing:  2500 2603  93.0   2602    2749
-Waiting:     2500 2603  93.0   2601    2748
-Total:       2500 2603  93.0   2602    2749
+Connect:        0    0   0.0      0       0
+Processing:  1452 1532 109.7   1572    1657
+Waiting:     1451 1531 109.8   1571    1656
+Total:       1452 1532 109.7   1572    1657
 
 Percentage of the requests served within a certain time (ms)
-  50%   2577
-  66%   2627
-  75%   2627
-  80%   2749
-  90%   2749
-  95%   2749
-  98%   2749
-  99%   2749
- 100%   2749 (longest request)
+  50%   1487
+  66%   1487
+  75%   1657
+  80%   1657
+  90%   1657
+  95%   1657
+  98%   1657
+  99%   1657
+ 100%   1657 (longest request)
 
-Rails response builder
-homes = Home.connection.exec_query(homes.to_sql)
-      return render json: homes.to_a { |home| Fast::HomeSerializer.new(home).serializable_hash }
+Description
+JSON:API Serializer from a hash via ActiveRecord.exec_query (no ActiveModel)
 
 
 Rails request log
-Started GET "/homes.json?via=fast_exec_query&limit=10000&bob=5a90fb06172b9f72b4ecf91aa6f851de" for ::1 at 2020-05-16 14:07:45 -0400
+Started GET "/homes.json?via=fast_exec_query&limit=10000&bob=2f9b30cc5594f209befe30ada456cf57" for ::1 at 2021-10-03 12:57:36 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"fast_exec_query", "limit"=>"10000", "bob"=>"5a90fb06172b9f72b4ecf91aa6f851de"}
-  [1m[35mSQL (14.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
-  ↳ app/controllers/homes_controller.rb:58:in `index'
-No serializer found for resource: {"id"=>2730890, "latitude"=>"-11.211594", "longitude"=>"30.430026"}
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (388.81ms)
-MEMSTAT: 63 / 3006
-Completed 200 OK in 2743ms (Views: 389.6ms | ActiveRecord: 14.2ms | Allocations: 1446721)
-Started GET "/homes.json?via=fast_exec_query&limit=10000&bob=5a90fb06172b9f72b4ecf91aa6f851de" for ::1 at 2020-05-16 14:07:47 -0400
+  Parameters: {"via"=>"fast_exec_query", "limit"=>"10000", "bob"=>"2f9b30cc5594f209befe30ada456cf57"}
+  [1m[35mSQL (32.1ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
+  ↳ config/initializers/strategies.rb:88:in `block in <main>'
+No serializer found for resource: {"id"=>1, "latitude"=>"8.480071", "longitude"=>"71.029739"}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (202.06ms)
+MEMSTAT: 330534 / 23220039
+RESPONSE BODY SIZE: 601819
+Completed 200 OK in 1649ms (Views: 214.2ms | ActiveRecord: 32.1ms | Allocations: 1230021)
+Started GET "/homes.json?via=fast_exec_query&limit=10000&bob=2f9b30cc5594f209befe30ada456cf57" for ::1 at 2021-10-03 12:57:38 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"fast_exec_query", "limit"=>"10000", "bob"=>"5a90fb06172b9f72b4ecf91aa6f851de"}
-  [1m[35mSQL (12.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
-  ↳ app/controllers/homes_controller.rb:58:in `index'
-No serializer found for resource: {"id"=>2739394, "latitude"=>"-80.402419", "longitude"=>"86.540441"}
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (340.17ms)
-MEMSTAT: 63 / 3006
-Completed 200 OK in 2496ms (Views: 340.9ms | ActiveRecord: 12.5ms | Allocations: 1446663)
-Started GET "/homes.json?via=fast_exec_query&limit=10000&bob=5a90fb06172b9f72b4ecf91aa6f851de" for ::1 at 2020-05-16 14:07:50 -0400
+  Parameters: {"via"=>"fast_exec_query", "limit"=>"10000", "bob"=>"2f9b30cc5594f209befe30ada456cf57"}
+  [1m[35mSQL (29.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
+  ↳ config/initializers/strategies.rb:88:in `block in <main>'
+No serializer found for resource: {"id"=>1, "latitude"=>"8.480071", "longitude"=>"71.029739"}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (162.12ms)
+MEMSTAT: 330602 / 23223425
+RESPONSE BODY SIZE: 601819
+Completed 200 OK in 1483ms (Views: 162.6ms | ActiveRecord: 29.6ms | Allocations: 1232001)
+Started GET "/homes.json?via=fast_exec_query&limit=10000&bob=2f9b30cc5594f209befe30ada456cf57" for ::1 at 2021-10-03 12:57:39 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"fast_exec_query", "limit"=>"10000", "bob"=>"5a90fb06172b9f72b4ecf91aa6f851de"}
-  [1m[35mSQL (12.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
-  ↳ app/controllers/homes_controller.rb:58:in `index'
-No serializer found for resource: {"id"=>2748061, "latitude"=>"-57.949879", "longitude"=>"-84.082274"}
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (344.79ms)
-MEMSTAT: 63 / 3006
-Completed 200 OK in 2558ms (Views: 345.6ms | ActiveRecord: 12.4ms | Allocations: 1446662)
-Started GET "/homes.json?via=fast_exec_query&limit=10000&bob=5a90fb06172b9f72b4ecf91aa6f851de" for ::1 at 2020-05-16 14:07:53 -0400
-Processing by HomesController#index as JSON
-  Parameters: {"via"=>"fast_exec_query", "limit"=>"10000", "bob"=>"5a90fb06172b9f72b4ecf91aa6f851de"}
-  [1m[35mSQL (16.8ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
-  ↳ app/controllers/homes_controller.rb:58:in `index'
-No serializer found for resource: {"id"=>2756511, "latitude"=>"40.071684", "longitude"=>"-79.656568"}
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (368.37ms)
-MEMSTAT: 63 / 3006
-Completed 200 OK in 2573ms (Views: 369.0ms | ActiveRecord: 16.8ms | Allocations: 1446662)
-Started GET "/homes.json?via=fast_exec_query&limit=10000&bob=5a90fb06172b9f72b4ecf91aa6f851de" for ::1 at 2020-05-16 14:07:55 -0400
-Processing by HomesController#index as JSON
-  Parameters: {"via"=>"fast_exec_query", "limit"=>"10000", "bob"=>"5a90fb06172b9f72b4ecf91aa6f851de"}
-  [1m[35mSQL (12.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
-  ↳ app/controllers/homes_controller.rb:58:in `index'
-No serializer found for resource: {"id"=>2765152, "latitude"=>"-59.486852", "longitude"=>"11.764755"}
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (363.5ms)
-MEMSTAT: 63 / 3006
-Completed 200 OK in 2621ms (Views: 364.2ms | ActiveRecord: 12.2ms | Allocations: 1446654)
+  Parameters: {"via"=>"fast_exec_query", "limit"=>"10000", "bob"=>"2f9b30cc5594f209befe30ada456cf57"}
+  [1m[35mSQL (27.7ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000[0m
+  ↳ config/initializers/strategies.rb:88:in `block in <main>'
+No serializer found for resource: {"id"=>1, "latitude"=>"8.480071", "longitude"=>"71.029739"}
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (154.73ms)
+MEMSTAT: 332397 / 23313879
+RESPONSE BODY SIZE: 601819
+Completed 200 OK in 1448ms (Views: 155.1ms | ActiveRecord: 27.7ms | Allocations: 1233741)

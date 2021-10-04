@@ -1,0 +1,72 @@
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /homes.json?via=jbuilder_map_oj&limit=100&bob=b8fae7d8ae6f5e3994e82abe0ee88522
+Document Length:        6803 bytes
+
+Concurrency Level:      1
+Time taken for tests:   0.611 seconds
+Complete requests:      3
+Failed requests:        0
+Total transferred:      21756 bytes
+HTML transferred:       20409 bytes
+Requests per second:    4.91 [#/sec] (mean)
+Time per request:       203.729 [ms] (mean)
+Time per request:       203.729 [ms] (mean, across all concurrent requests)
+Transfer rate:          34.76 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       0
+Processing:   199  203   5.7    206     210
+Waiting:      198  203   5.8    206     210
+Total:        199  204   5.8    206     210
+
+Percentage of the requests served within a certain time (ms)
+  50%    202
+  66%    202
+  75%    210
+  80%    210
+  90%    210
+  95%    210
+  98%    210
+  99%    210
+ 100%    210 (longest request)
+
+Description
+Jbuilder from an array of ActiveModel objects, optimized with OJ
+
+
+Rails request log
+Started GET "/homes.json?via=jbuilder_map_oj&limit=100&bob=b8fae7d8ae6f5e3994e82abe0ee88522" for ::1 at 2021-10-03 12:55:02 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder_map_oj", "limit"=>"100", "bob"=>"b8fae7d8ae6f5e3994e82abe0ee88522"}
+  [1m[36mHome Load (1.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 100]]
+  ↳ config/initializers/strategies.rb:112:in `block (2 levels) in <main>'
+MEMSTAT: 8415 / 534035
+RESPONSE BODY SIZE: 6803
+Completed 200 OK in 208ms (Views: 0.1ms | ActiveRecord: 1.2ms | Allocations: 34767)
+Started GET "/homes.json?via=jbuilder_map_oj&limit=100&bob=b8fae7d8ae6f5e3994e82abe0ee88522" for ::1 at 2021-10-03 12:55:02 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder_map_oj", "limit"=>"100", "bob"=>"b8fae7d8ae6f5e3994e82abe0ee88522"}
+  [1m[36mHome Load (0.7ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 100]]
+  ↳ config/initializers/strategies.rb:112:in `block (2 levels) in <main>'
+MEMSTAT: 6182 / 421317
+RESPONSE BODY SIZE: 6803
+Completed 200 OK in 200ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 27170)
+Started GET "/homes.json?via=jbuilder_map_oj&limit=100&bob=b8fae7d8ae6f5e3994e82abe0ee88522" for ::1 at 2021-10-03 12:55:03 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder_map_oj", "limit"=>"100", "bob"=>"b8fae7d8ae6f5e3994e82abe0ee88522"}
+  [1m[36mHome Load (0.8ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 100]]
+  ↳ config/initializers/strategies.rb:112:in `block (2 levels) in <main>'
+MEMSTAT: 6182 / 421317
+RESPONSE BODY SIZE: 6803
+Completed 200 OK in 197ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 27494)

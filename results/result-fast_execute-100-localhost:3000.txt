@@ -1,4 +1,4 @@
-This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
@@ -9,122 +9,64 @@ Server Software:
 Server Hostname:        localhost
 Server Port:            3000
 
-Document Path:          /homes.json?via=fast_execute&limit=100&bob=cb08b2600030fab33b5af8d0e637aaeb
-Document Length:        153241 bytes
+Document Path:          /homes.json?via=fast_execute&limit=100&bob=6bf250128ed962ac7d2f6f354bb9e116
+Document Length:        10615 bytes
 
 Concurrency Level:      1
-Time taken for tests:   1.591 seconds
-Complete requests:      5
+Time taken for tests:   0.613 seconds
+Complete requests:      3
 Failed requests:        0
-Non-2xx responses:      5
-Total transferred:      767475 bytes
-HTML transferred:       766205 bytes
-Requests per second:    3.14 [#/sec] (mean)
-Time per request:       318.185 [ms] (mean)
-Time per request:       318.185 [ms] (mean, across all concurrent requests)
-Transfer rate:          471.10 [Kbytes/sec] received
+Total transferred:      33192 bytes
+HTML transferred:       31845 bytes
+Requests per second:    4.90 [#/sec] (mean)
+Time per request:       204.223 [ms] (mean)
+Time per request:       204.223 [ms] (mean, across all concurrent requests)
+Transfer rate:          52.91 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    0   0.0      0       0
-Processing:   289  318  39.2    308     386
-Waiting:      289  318  39.2    308     386
-Total:        289  318  39.2    308     387
+Connect:        0    0   0.1      0       0
+Processing:   201  204   3.3    205     207
+Waiting:      201  204   3.3    205     207
+Total:        201  204   3.4    206     208
 
 Percentage of the requests served within a certain time (ms)
-  50%    304
-  66%    312
-  75%    312
-  80%    387
-  90%    387
-  95%    387
-  98%    387
-  99%    387
- 100%    387 (longest request)
+  50%    204
+  66%    204
+  75%    208
+  80%    208
+  90%    208
+  95%    208
+  98%    208
+  99%    208
+ 100%    208 (longest request)
 
-Rails response builder
-homes = Home.connection.execute(homes.to_sql)
-      return render json: homes.to_a.map { |home| Fast::HomeSerializer.new(home).serializable_hash }.to_json
+Description
+JSON:API Serializer from a hash via ActiveRecord.execute (no ActiveModel)
 
 
 Rails request log
-Started GET "/homes.json?via=fast_execute&limit=100&bob=cb08b2600030fab33b5af8d0e637aaeb" for ::1 at 2020-05-16 13:34:51 -0400
+Started GET "/homes.json?via=fast_execute&limit=100&bob=6bf250128ed962ac7d2f6f354bb9e116" for ::1 at 2021-10-03 12:55:00 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"fast_execute", "limit"=>"100", "bob"=>"cb08b2600030fab33b5af8d0e637aaeb"}
-  [1m[35m (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
-  ↳ app/controllers/homes_controller.rb:64:in `index'
-Completed 500 Internal Server Error in 158ms (ActiveRecord: 0.5ms | Allocations: 1289)
-
-
-  
-FastJsonapi::MandatoryField (id is a mandatory field in the jsonapi spec):
-  
-app/controllers/homes_controller.rb:65:in `block in index'
-app/controllers/homes_controller.rb:65:in `map'
-app/controllers/homes_controller.rb:65:in `index'
-app/controllers/homes_controller.rb:95:in `block in benchmark!'
-app/controllers/homes_controller.rb:94:in `benchmark!'
-Started GET "/homes.json?via=fast_execute&limit=100&bob=cb08b2600030fab33b5af8d0e637aaeb" for ::1 at 2020-05-16 13:34:51 -0400
+  Parameters: {"via"=>"fast_execute", "limit"=>"100", "bob"=>"6bf250128ed962ac7d2f6f354bb9e116"}
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ config/initializers/strategies.rb:98:in `block in <main>'
+MEMSTAT: 11129 / 646661
+RESPONSE BODY SIZE: 10615
+Completed 200 OK in 206ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 43263)
+Started GET "/homes.json?via=fast_execute&limit=100&bob=6bf250128ed962ac7d2f6f354bb9e116" for ::1 at 2021-10-03 12:55:01 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"fast_execute", "limit"=>"100", "bob"=>"cb08b2600030fab33b5af8d0e637aaeb"}
-  [1m[35m (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
-  ↳ app/controllers/homes_controller.rb:64:in `index'
-Completed 500 Internal Server Error in 179ms (ActiveRecord: 0.5ms | Allocations: 1288)
-
-
-  
-FastJsonapi::MandatoryField (id is a mandatory field in the jsonapi spec):
-  
-app/controllers/homes_controller.rb:65:in `block in index'
-app/controllers/homes_controller.rb:65:in `map'
-app/controllers/homes_controller.rb:65:in `index'
-app/controllers/homes_controller.rb:95:in `block in benchmark!'
-app/controllers/homes_controller.rb:94:in `benchmark!'
-Started GET "/homes.json?via=fast_execute&limit=100&bob=cb08b2600030fab33b5af8d0e637aaeb" for ::1 at 2020-05-16 13:34:51 -0400
+  Parameters: {"via"=>"fast_execute", "limit"=>"100", "bob"=>"6bf250128ed962ac7d2f6f354bb9e116"}
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ config/initializers/strategies.rb:98:in `block in <main>'
+MEMSTAT: 9551 / 566072
+RESPONSE BODY SIZE: 10615
+Completed 200 OK in 201ms (Views: 0.1ms | ActiveRecord: 1.4ms | Allocations: 36908)
+Started GET "/homes.json?via=fast_execute&limit=100&bob=6bf250128ed962ac7d2f6f354bb9e116" for ::1 at 2021-10-03 12:55:01 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"fast_execute", "limit"=>"100", "bob"=>"cb08b2600030fab33b5af8d0e637aaeb"}
-  [1m[35m (0.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
-  ↳ app/controllers/homes_controller.rb:64:in `index'
-Completed 500 Internal Server Error in 203ms (ActiveRecord: 0.6ms | Allocations: 1288)
-
-
-  
-FastJsonapi::MandatoryField (id is a mandatory field in the jsonapi spec):
-  
-app/controllers/homes_controller.rb:65:in `block in index'
-app/controllers/homes_controller.rb:65:in `map'
-app/controllers/homes_controller.rb:65:in `index'
-app/controllers/homes_controller.rb:95:in `block in benchmark!'
-app/controllers/homes_controller.rb:94:in `benchmark!'
-Started GET "/homes.json?via=fast_execute&limit=100&bob=cb08b2600030fab33b5af8d0e637aaeb" for ::1 at 2020-05-16 13:34:52 -0400
-Processing by HomesController#index as JSON
-  Parameters: {"via"=>"fast_execute", "limit"=>"100", "bob"=>"cb08b2600030fab33b5af8d0e637aaeb"}
-  [1m[35m (0.7ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
-  ↳ app/controllers/homes_controller.rb:64:in `index'
-Completed 500 Internal Server Error in 165ms (ActiveRecord: 0.7ms | Allocations: 1288)
-
-
-  
-FastJsonapi::MandatoryField (id is a mandatory field in the jsonapi spec):
-  
-app/controllers/homes_controller.rb:65:in `block in index'
-app/controllers/homes_controller.rb:65:in `map'
-app/controllers/homes_controller.rb:65:in `index'
-app/controllers/homes_controller.rb:95:in `block in benchmark!'
-app/controllers/homes_controller.rb:94:in `benchmark!'
-Started GET "/homes.json?via=fast_execute&limit=100&bob=cb08b2600030fab33b5af8d0e637aaeb" for ::1 at 2020-05-16 13:34:52 -0400
-Processing by HomesController#index as JSON
-  Parameters: {"via"=>"fast_execute", "limit"=>"100", "bob"=>"cb08b2600030fab33b5af8d0e637aaeb"}
-  [1m[35m (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
-  ↳ app/controllers/homes_controller.rb:64:in `index'
-Completed 500 Internal Server Error in 169ms (ActiveRecord: 0.5ms | Allocations: 1291)
-
-
-  
-FastJsonapi::MandatoryField (id is a mandatory field in the jsonapi spec):
-  
-app/controllers/homes_controller.rb:65:in `block in index'
-app/controllers/homes_controller.rb:65:in `map'
-app/controllers/homes_controller.rb:65:in `index'
-app/controllers/homes_controller.rb:95:in `block in benchmark!'
-app/controllers/homes_controller.rb:94:in `benchmark!'
+  Parameters: {"via"=>"fast_execute", "limit"=>"100", "bob"=>"6bf250128ed962ac7d2f6f354bb9e116"}
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ config/initializers/strategies.rb:98:in `block in <main>'
+MEMSTAT: 9551 / 566072
+RESPONSE BODY SIZE: 10615
+Completed 200 OK in 199ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 36908)

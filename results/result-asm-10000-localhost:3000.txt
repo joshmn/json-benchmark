@@ -1,4 +1,4 @@
-This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
@@ -9,81 +9,67 @@ Server Software:
 Server Hostname:        localhost
 Server Port:            3000
 
-Document Path:          /homes.json?via=asm&limit=10000&bob=05beda82c1226fcd97f366e02b614b54
-Document Length:        630672 bytes
+Document Path:          /homes.json?via=asm&limit=10000&bob=842d51c63abe5a8419cdf1f8633e5666
+Document Length:        599678 bytes
 
 Concurrency Level:      1
-Time taken for tests:   27.246 seconds
-Complete requests:      5
-Failed requests:        4
-   (Connect: 0, Receive: 0, Length: 4, Exceptions: 0)
-Total transferred:      3155011 bytes
-HTML transferred:       3152766 bytes
-Requests per second:    0.18 [#/sec] (mean)
-Time per request:       5449.201 [ms] (mean)
-Time per request:       5449.201 [ms] (mean, across all concurrent requests)
-Transfer rate:          113.08 [Kbytes/sec] received
+Time taken for tests:   10.148 seconds
+Complete requests:      3
+Failed requests:        0
+Total transferred:      1800381 bytes
+HTML transferred:       1799034 bytes
+Requests per second:    0.30 [#/sec] (mean)
+Time per request:       3382.754 [ms] (mean)
+Time per request:       3382.754 [ms] (mean, across all concurrent requests)
+Transfer rate:          173.25 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
 Connect:        0    0   0.0      0       0
-Processing:  5193 5449 202.1   5507    5697
-Waiting:     5193 5449 202.1   5507    5696
-Total:       5193 5449 202.1   5507    5697
+Processing:  3346 3382  33.0   3401    3411
+Waiting:     3346 3382  32.8   3400    3410
+Total:       3347 3383  32.9   3401    3411
 
 Percentage of the requests served within a certain time (ms)
-  50%   5412
-  66%   5603
-  75%   5603
-  80%   5697
-  90%   5697
-  95%   5697
-  98%   5697
-  99%   5697
- 100%   5697 (longest request)
+  50%   3390
+  66%   3390
+  75%   3411
+  80%   3411
+  90%   3411
+  95%   3411
+  98%   3411
+  99%   3411
+ 100%   3411 (longest request)
 
-Rails response builder
-return render json: ActiveModelSerializers::SerializableResource.new(homes, each_serializer: AsmSerializer).to_json
+Description
+ActiveModelSerializers with ActiveModel
 
 
 Rails request log
-Started GET "/homes.json?via=asm&limit=10000&bob=05beda82c1226fcd97f366e02b614b54" for ::1 at 2020-05-16 14:03:37 -0400
+Started GET "/homes.json?via=asm&limit=10000&bob=842d51c63abe5a8419cdf1f8633e5666" for ::1 at 2021-10-03 12:56:18 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"asm", "limit"=>"10000", "bob"=>"05beda82c1226fcd97f366e02b614b54"}
-[active_model_serializers]   [1m[36mHome Load (18.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
-[active_model_serializers]   ↳ app/controllers/homes_controller.rb:34:in `index'
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1115.81ms)
-MEMSTAT: 182 / 6037
-Completed 200 OK in 5336ms (Views: 0.3ms | ActiveRecord: 18.2ms | Allocations: 2567619)
-Started GET "/homes.json?via=asm&limit=10000&bob=05beda82c1226fcd97f366e02b614b54" for ::1 at 2020-05-16 14:03:43 -0400
+  Parameters: {"via"=>"asm", "limit"=>"10000", "bob"=>"842d51c63abe5a8419cdf1f8633e5666"}
+[active_model_serializers]   [1m[36mHome Load (27.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+[active_model_serializers]   ↳ config/initializers/strategies.rb:44:in `block in <main>'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (565.69ms)
+MEMSTAT: 702183 / 47109836
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 3344ms (Views: 0.2ms | ActiveRecord: 27.6ms | Allocations: 2463836)
+Started GET "/homes.json?via=asm&limit=10000&bob=842d51c63abe5a8419cdf1f8633e5666" for ::1 at 2021-10-03 12:56:22 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"asm", "limit"=>"10000", "bob"=>"05beda82c1226fcd97f366e02b614b54"}
-[active_model_serializers]   [1m[36mHome Load (13.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
-[active_model_serializers]   ↳ app/controllers/homes_controller.rb:34:in `index'
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1212.11ms)
-MEMSTAT: 182 / 6037
-Completed 200 OK in 5692ms (Views: 0.2ms | ActiveRecord: 13.5ms | Allocations: 2567606)
-Started GET "/homes.json?via=asm&limit=10000&bob=05beda82c1226fcd97f366e02b614b54" for ::1 at 2020-05-16 14:03:48 -0400
+  Parameters: {"via"=>"asm", "limit"=>"10000", "bob"=>"842d51c63abe5a8419cdf1f8633e5666"}
+[active_model_serializers]   [1m[36mHome Load (27.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+[active_model_serializers]   ↳ config/initializers/strategies.rb:44:in `block in <main>'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (579.07ms)
+MEMSTAT: 703723 / 47187890
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 3387ms (Views: 0.2ms | ActiveRecord: 27.2ms | Allocations: 2467193)
+Started GET "/homes.json?via=asm&limit=10000&bob=842d51c63abe5a8419cdf1f8633e5666" for ::1 at 2021-10-03 12:56:25 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"asm", "limit"=>"10000", "bob"=>"05beda82c1226fcd97f366e02b614b54"}
-[active_model_serializers]   [1m[36mHome Load (15.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
-[active_model_serializers]   ↳ app/controllers/homes_controller.rb:34:in `index'
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1178.5ms)
-MEMSTAT: 182 / 6037
-Completed 200 OK in 5597ms (Views: 0.3ms | ActiveRecord: 15.2ms | Allocations: 2567271)
-Started GET "/homes.json?via=asm&limit=10000&bob=05beda82c1226fcd97f366e02b614b54" for ::1 at 2020-05-16 14:03:54 -0400
-Processing by HomesController#index as JSON
-  Parameters: {"via"=>"asm", "limit"=>"10000", "bob"=>"05beda82c1226fcd97f366e02b614b54"}
-[active_model_serializers]   [1m[36mHome Load (16.7ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
-[active_model_serializers]   ↳ app/controllers/homes_controller.rb:34:in `index'
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1160.04ms)
-MEMSTAT: 182 / 6037
-Completed 200 OK in 5403ms (Views: 0.4ms | ActiveRecord: 16.7ms | Allocations: 2567487)
-Started GET "/homes.json?via=asm&limit=10000&bob=05beda82c1226fcd97f366e02b614b54" for ::1 at 2020-05-16 14:03:59 -0400
-Processing by HomesController#index as JSON
-  Parameters: {"via"=>"asm", "limit"=>"10000", "bob"=>"05beda82c1226fcd97f366e02b614b54"}
-[active_model_serializers]   [1m[36mHome Load (12.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
-[active_model_serializers]   ↳ app/controllers/homes_controller.rb:34:in `index'
-[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1072.61ms)
-MEMSTAT: 182 / 6037
-Completed 200 OK in 5189ms (Views: 0.2ms | ActiveRecord: 12.6ms | Allocations: 2567393)
+  Parameters: {"via"=>"asm", "limit"=>"10000", "bob"=>"842d51c63abe5a8419cdf1f8633e5666"}
+[active_model_serializers]   [1m[36mHome Load (26.9ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+[active_model_serializers]   ↳ config/initializers/strategies.rb:44:in `block in <main>'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (577.66ms)
+MEMSTAT: 701511 / 47075793
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 3409ms (Views: 0.2ms | ActiveRecord: 26.9ms | Allocations: 2461020)

@@ -1,0 +1,72 @@
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /homes.json?via=jbuilder&limit=10000&bob=ff60987b5c4b234467de626ae892cd9d
+Document Length:        599678 bytes
+
+Concurrency Level:      1
+Time taken for tests:   7.145 seconds
+Complete requests:      3
+Failed requests:        0
+Total transferred:      1800381 bytes
+HTML transferred:       1799034 bytes
+Requests per second:    0.42 [#/sec] (mean)
+Time per request:       2381.741 [ms] (mean)
+Time per request:       2381.741 [ms] (mean, across all concurrent requests)
+Transfer rate:          246.06 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:  2374 2381   9.8   2385    2392
+Waiting:     2373 2380   9.8   2384    2391
+Total:       2374 2382   9.8   2386    2393
+
+Percentage of the requests served within a certain time (ms)
+  50%   2378
+  66%   2378
+  75%   2393
+  80%   2393
+  90%   2393
+  95%   2393
+  98%   2393
+  99%   2393
+ 100%   2393 (longest request)
+
+Description
+Jbuilder from an array of ActiveModel objects
+
+
+Rails request log
+Started GET "/homes.json?via=jbuilder&limit=10000&bob=ff60987b5c4b234467de626ae892cd9d" for ::1 at 2021-10-03 12:58:08 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder", "limit"=>"10000", "bob"=>"ff60987b5c4b234467de626ae892cd9d"}
+  [1m[36mHome Load (29.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:108:in `block (2 levels) in <main>'
+MEMSTAT: 552543 / 34156084
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 2371ms (Views: 0.2ms | ActiveRecord: 29.2ms | Allocations: 1971026)
+Started GET "/homes.json?via=jbuilder&limit=10000&bob=ff60987b5c4b234467de626ae892cd9d" for ::1 at 2021-10-03 12:58:10 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder", "limit"=>"10000", "bob"=>"ff60987b5c4b234467de626ae892cd9d"}
+  [1m[36mHome Load (28.1ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:108:in `block (2 levels) in <main>'
+MEMSTAT: 550681 / 34062284
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 2375ms (Views: 0.1ms | ActiveRecord: 28.1ms | Allocations: 1966037)
+Started GET "/homes.json?via=jbuilder&limit=10000&bob=ff60987b5c4b234467de626ae892cd9d" for ::1 at 2021-10-03 12:58:13 -0700
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"jbuilder", "limit"=>"10000", "bob"=>"ff60987b5c4b234467de626ae892cd9d"}
+  [1m[36mHome Load (30.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:108:in `block (2 levels) in <main>'
+MEMSTAT: 550780 / 34067818
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 2370ms (Views: 0.2ms | ActiveRecord: 30.2ms | Allocations: 1963956)

@@ -1,4 +1,4 @@
-This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
@@ -9,81 +9,64 @@ Server Software:
 Server Hostname:        localhost
 Server Port:            3000
 
-Document Path:          /homes.json?via=asm_exec_query_oj&limit=100&bob=8d0ab3a972c706733bc12cb0b7c33056
-Document Length:        6325 bytes
+Document Path:          /homes.json?via=asm_exec_query_oj&limit=100&bob=8e05db0df82a6a76cb065bb9062cfc15
+Document Length:        5823 bytes
 
 Concurrency Level:      1
-Time taken for tests:   1.817 seconds
-Complete requests:      5
+Time taken for tests:   0.601 seconds
+Complete requests:      3
 Failed requests:        0
-Total transferred:      33870 bytes
-HTML transferred:       31625 bytes
-Requests per second:    2.75 [#/sec] (mean)
-Time per request:       363.394 [ms] (mean)
-Time per request:       363.394 [ms] (mean, across all concurrent requests)
-Transfer rate:          18.20 [Kbytes/sec] received
+Total transferred:      18816 bytes
+HTML transferred:       17469 bytes
+Requests per second:    4.99 [#/sec] (mean)
+Time per request:       200.341 [ms] (mean)
+Time per request:       200.341 [ms] (mean, across all concurrent requests)
+Transfer rate:          30.57 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
 Connect:        0    0   0.0      0       0
-Processing:   355  363   8.5    365     374
-Waiting:      355  363   8.5    365     374
-Total:        355  363   8.5    366     375
+Processing:   194  200   8.9    203     210
+Waiting:      194  200   9.0    203     210
+Total:        194  200   8.9    204     210
 
 Percentage of the requests served within a certain time (ms)
-  50%    361
-  66%    370
-  75%    370
-  80%    375
-  90%    375
-  95%    375
-  98%    375
-  99%    375
- 100%    375 (longest request)
+  50%    197
+  66%    197
+  75%    210
+  80%    210
+  90%    210
+  95%    210
+  98%    210
+  99%    210
+ 100%    210 (longest request)
 
-Rails response builder
-homes = Home.connection.exec_query(homes.to_sql)
-      return render json: Oj.dump(ActiveModel::Serializer::CollectionSerializer.new(homes, serializer: AsmArSerializer).as_json, mode: :compat)
+Description
+ActiveModelSerializers from a hash via ActiveRecord.exec_query (no ActiveModel), optimized with OJ
 
 
 Rails request log
-Started GET "/homes.json?via=asm_exec_query_oj&limit=100&bob=8d0ab3a972c706733bc12cb0b7c33056" for ::1 at 2020-05-16 13:34:10 -0400
+Started GET "/homes.json?via=asm_exec_query_oj&limit=100&bob=8e05db0df82a6a76cb065bb9062cfc15" for ::1 at 2021-10-03 12:54:55 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"asm_exec_query_oj", "limit"=>"100", "bob"=>"8d0ab3a972c706733bc12cb0b7c33056"}
-  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
-  ↳ app/controllers/homes_controller.rb:41:in `index'
-Memory retained: 0mb
-Memory allocated: 3mb
-Completed 200 OK in 359ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 17256)
-Started GET "/homes.json?via=asm_exec_query_oj&limit=100&bob=8d0ab3a972c706733bc12cb0b7c33056" for ::1 at 2020-05-16 13:34:10 -0400
+  Parameters: {"via"=>"asm_exec_query_oj", "limit"=>"100", "bob"=>"8e05db0df82a6a76cb065bb9062cfc15"}
+  [1m[35mSQL (1.1ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ config/initializers/strategies.rb:57:in `block in <main>'
+MEMSTAT: 3459 / 267459
+RESPONSE BODY SIZE: 5823
+Completed 200 OK in 194ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 17468)
+Started GET "/homes.json?via=asm_exec_query_oj&limit=100&bob=8e05db0df82a6a76cb065bb9062cfc15" for ::1 at 2021-10-03 12:54:55 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"asm_exec_query_oj", "limit"=>"100", "bob"=>"8d0ab3a972c706733bc12cb0b7c33056"}
-  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
-  ↳ app/controllers/homes_controller.rb:41:in `index'
-Memory retained: 0mb
-Memory allocated: 3mb
-Completed 200 OK in 353ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 17256)
-Started GET "/homes.json?via=asm_exec_query_oj&limit=100&bob=8d0ab3a972c706733bc12cb0b7c33056" for ::1 at 2020-05-16 13:34:11 -0400
+  Parameters: {"via"=>"asm_exec_query_oj", "limit"=>"100", "bob"=>"8e05db0df82a6a76cb065bb9062cfc15"}
+  [1m[35mSQL (1.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ config/initializers/strategies.rb:57:in `block in <main>'
+MEMSTAT: 5261 / 357877
+RESPONSE BODY SIZE: 5823
+Completed 200 OK in 208ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 23402)
+Started GET "/homes.json?via=asm_exec_query_oj&limit=100&bob=8e05db0df82a6a76cb065bb9062cfc15" for ::1 at 2021-10-03 12:54:55 -0700
 Processing by HomesController#index as JSON
-  Parameters: {"via"=>"asm_exec_query_oj", "limit"=>"100", "bob"=>"8d0ab3a972c706733bc12cb0b7c33056"}
-  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
-  ↳ app/controllers/homes_controller.rb:41:in `index'
-Memory retained: 0mb
-Memory allocated: 3mb
-Completed 200 OK in 353ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 17292)
-Started GET "/homes.json?via=asm_exec_query_oj&limit=100&bob=8d0ab3a972c706733bc12cb0b7c33056" for ::1 at 2020-05-16 13:34:11 -0400
-Processing by HomesController#index as JSON
-  Parameters: {"via"=>"asm_exec_query_oj", "limit"=>"100", "bob"=>"8d0ab3a972c706733bc12cb0b7c33056"}
-  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
-  ↳ app/controllers/homes_controller.rb:41:in `index'
-Memory retained: 0mb
-Memory allocated: 3mb
-Completed 200 OK in 367ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 17256)
-Started GET "/homes.json?via=asm_exec_query_oj&limit=100&bob=8d0ab3a972c706733bc12cb0b7c33056" for ::1 at 2020-05-16 13:34:12 -0400
-Processing by HomesController#index as JSON
-  Parameters: {"via"=>"asm_exec_query_oj", "limit"=>"100", "bob"=>"8d0ab3a972c706733bc12cb0b7c33056"}
-  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
-  ↳ app/controllers/homes_controller.rb:41:in `index'
-Memory retained: 0mb
-Memory allocated: 3mb
-Completed 200 OK in 372ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 17256)
+  Parameters: {"via"=>"asm_exec_query_oj", "limit"=>"100", "bob"=>"8e05db0df82a6a76cb065bb9062cfc15"}
+  [1m[35mSQL (0.9ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 100[0m
+  ↳ config/initializers/strategies.rb:57:in `block in <main>'
+MEMSTAT: 3374 / 263003
+RESPONSE BODY SIZE: 5823
+Completed 200 OK in 192ms (Views: 0.1ms | ActiveRecord: 0.9ms | Allocations: 15622)

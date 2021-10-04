@@ -32,7 +32,7 @@ options[:limit] ||= 100000
 
 # Sorry
 if options[:all]
-  @types = HomesController::TYPES
+  @types = SerializeManager.types
 end
 
 options[:host] ||= 'localhost:3000'
@@ -42,7 +42,7 @@ def self.run(options)
   random = SecureRandom.hex
   query = "homes.json?via=#{options[:kind]}&limit=#{options[:limit]}&bob=#{random}"
   filename = "results/result-#{options[:kind]}-#{options[:limit]}-#{options[:host]}.txt"
-  system("ab -n 5 -s 120 'http://#{options[:host]}/#{query}' > #{filename}")
+  system("ab -n #{options[:number]} -s 120 'http://#{options[:host]}/#{query}' > #{filename}")
   if options[:host].index("heroku")
     `heroku logs -n 1000 > #{random}-log.txt`
     log = `sed -n '/#{query}/,/Completed 200/p' #{random}-log.txt`
@@ -50,8 +50,8 @@ def self.run(options)
   else
     log = `sed -n '/#{query}/,/Completed 200/p' log/development.log`
   end
-  response_builder = File.read('app/controllers/homes_controller.rb').split("when '#{options[:kind]}'", 2)[1].split("when")[0].split(" end")[0].strip
-  open(filename, 'a') { |f| f.puts "\nRails response builder\n#{response_builder}\n\n\nRails request log\n#{log}" }
+  response_builder = SerializeManager.description(options[:kind])
+  open(filename, 'a') { |f| f.puts "\nDescription\n#{response_builder}\n\n\nRails request log\n#{log}" }
   results = {runs: [], averages: {}}
   log.lines.select { |line| line.index("Completed 200 OK") }.each do |line|
     total = line.split(" in ", 2)[1].split("(", 2)[0].strip
@@ -66,6 +66,11 @@ def self.run(options)
     retained, allocated = mems.split(' / ').map(&:to_i)
     results[:runs][index][:retained] = retained
     results[:runs][index][:allocated] = allocated
+  end
+
+  log.lines.select { |line| line.index("RESPONSE BODY SIZE") }.each_with_index do |line, index|
+    response_body = line.split("RESPONSE BODY SIZE: ", 2)[1].to_i
+    results[:runs][index][:response_body] = response_body
   end
 
   results[:runs][0].keys.each do |key|
@@ -98,7 +103,7 @@ file = CSV.generate do |csv|
       csv << ["Name", *v[:averages].keys, "Builder"]
       headers = true
     end
-    csv << [k, v[:averages].values, v[:builder]].flatten
+    csv << [k, v[:averages].values.map { |value| value.to_f.round(2) }, v[:builder]].flatten
   end
 end
 

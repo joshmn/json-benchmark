@@ -1,30 +1,30 @@
-Name,total,views,db,allocations,retained,allocated
-nothing,396.0,39.52,6.22,247433.2,17.2,499.4
-nothing_oj,316.8,0.1,6.8,164849.6,17.2,380.2
-nothing_map,344.8,17.86,6.68,202075.0,17.2,398.2
-nothing_map_oj,296.0,0.1,5.72,149133.4,17.4,343.6
-asm,434.8,0.26,6.12,257963.6,23.0,499.6
-asm_oj,430.4,0.1,6.46,257264.2,17.4,550.8
-asm_exec_query,338.2,0.1,6.6,197099.4,5.2,330.2
-asm_exec_query_oj,253.4,0.1,6.82,108244.4,5.0,216.2
-asm_execute,328.8,23.3,5.86,188860.4,5.4,339.6
-asm_execute_oj,252.0,0.1,5.5,106004.0,5.0,221.4
-fast,481.2,0.16,5.9,330309.4,21.2,538.2
-fast_oj,320.0,0.1,6.54,167922.8,21.0,377.4
-fast_map,546.4,39.48,5.86,393929.2,22.2,756.8
-fast_map_oj,347.4,0.1,6.44,193452.8,22.0,420.0
-fast_exec_query,270.0,15.7,6.0,128413.8,5.0,236.0
-fast_exec_query_oj,463.8,0.14,5.04,319974.4,9.4,632.2
-fast_execute,435.8,0.12,6.6,297919.8,9.0,487.8
-fast_execute_oj,215.0,0.1,6.64,67583.6,9.0,139.4
-execute,264.2,0.1,6.7,124941.0,5.0,188.0
-execute_oj,172.4,0.1,6.72,21925.6,5.0,45.0
-execute_map,277.4,0.1,6.3,138241.6,5.0,221.0
-execute_map_oj,174.2,0.1,6.16,24930.2,5.0,63.0
-exec_query,269.0,0.1,6.84,128938.8,5.0,185.4
-exec_query_oj,176.4,0.1,6.98,25481.2,5.0,41.4
-exec_query_map,281.0,0.1,6.16,141017.6,5.0,215.4
-exec_query_map_oj,179.4,0.1,6.84,28208.4,5.0,59.0
-jbuilder,351.0,0.1,5.98,203254.2,17.0,347.8
-jbuilder_map_oj,352.8,0.1,6.58,202986.0,18.0,354.4
-pg,180.6,0.1,22.42,5184.6,6.0,12.0
+Name,total,views,db,allocations,retained,allocated,response_body,Builder
+nothing,3241.67,180.07,28.47,2559029.67,740718.33,56045227.0,599678.0,Vanilla ActiveModel#to_json using OJ
+nothing_oj,2000.0,0.17,29.33,1530370.33,450644.0,36599908.0,599678.0,Vanilla ActiveModel#to_json using OJ
+nothing_map,2362.33,192.17,28.97,1907029.0,530845.0,38301448.0,599678.0,Maps a collection to a hash
+nothing_map_oj,1739.67,0.13,28.4,1372329.0,371386.33,32887007.67,599678.0,Maps a collection to a hash and renders using OJ
+asm,3380.0,0.2,27.23,2464016.33,702472.33,47124506.33,599678.0,ActiveModelSerializers with ActiveModel
+asm_oj,3355.33,0.2,26.1,2494409.0,692707.67,54175882.33,599678.0,"ActiveModelSerializers with ActiveModel, optimized with OJ"
+asm_exec_query,2309.0,0.2,26.83,1874798.0,523528.0,31788489.33,601819.0,ActiveModelSerializers from a hash via ActiveRecord.exec_query (no ActiveModel)
+asm_exec_query_oj,1292.67,0.17,30.47,1030008.0,290597.33,21080206.67,601819.0,"ActiveModelSerializers from a hash via ActiveRecord.exec_query (no ActiveModel), optimized with OJ"
+asm_execute,1268.33,0.17,27.77,1033860.0,291096.0,21105294.67,601819.0,"ActiveModelSerializers from a hash via ActiveRecord.execute (no ActiveModel), optimized with OJ"
+asm_execute_oj,1230.33,0.2,29.67,998930.67,280450.0,21529921.0,601819.0,"ActiveModelSerializers from a hash via ActiveRecord.execute (no ActiveModel), optimized with OJ"
+fast,3855.33,0.2,28.67,3181265.67,900884.33,52233596.67,1008594.0,JSON:API Serializer an array of ActiveModel objects
+fast_oj,1980.0,0.2,27.1,1606152.67,431320.67,36973316.67,1008594.0,"JSON:API Serializer with an array of ActiveModel objects, optimized with OJ"
+fast_map,4637.67,427.53,26.77,3821106.33,1092459.0,74162874.67,1098585.0,"JSON:API Serializer, mapped from an array of ActiveModel objects"
+fast_map_oj,2438.67,0.2,31.07,1875678.67,510680.67,41510324.67,1098585.0,"JSON:API Serializer, mapped from an array of ActiveModel objects, optimized with OJ"
+fast_exec_query,1526.67,177.3,29.8,1231921.0,331177.67,23252447.67,601819.0,JSON:API Serializer from a hash via ActiveRecord.exec_query (no ActiveModel)
+fast_exec_query_oj,4403.0,0.2,29.23,3374914.33,960766.67,67069174.33,1100726.0,"JSON:API Serializer from a hash via ActiveRecord.exec_query (no ActiveModel), optimized with OJ"
+fast_execute,3857.33,0.2,27.57,3182310.33,911331.0,51664068.67,1100726.0,JSON:API Serializer from a hash via ActiveRecord.execute (no ActiveModel)
+fast_execute_oj,807.0,0.2,28.83,657229.67,170445.0,14098869.67,1100726.0,"JSON:API Serializer from a hash via ActiveRecord.execute (no ActiveModel), optimized with OJ"
+jbuilder,2372.0,0.17,29.17,1967006.33,551334.67,34095395.33,599678.0,Jbuilder from an array of ActiveModel objects
+jbuilder_map_oj,2387.0,0.17,27.97,1968858.0,551305.0,34793500.0,699680.0,"Jbuilder from an array of ActiveModel objects, optimized with OJ"
+execute,1378.67,0.13,29.6,1198892.0,320446.0,18480136.0,601819.0,Hash#to_json via ActiveRecord.execute (no ActiveModel)
+execute_oj,357.0,0.17,29.0,175111.33,30439.0,4159547.0,601819.0,"Hash#to_json via ActiveRecord.execute (no ActiveModel), optimized with OJ"
+execute_map,1511.67,0.17,28.63,1318926.0,360447.0,21440180.0,601819.0,Array of hashes mapped from ActiveRecord.execute (no ActiveModel)
+execute_map_oj,360.33,0.1,28.1,205691.33,40441.0,5919759.0,601819.0,"Array of hashes mapped from ActiveRecord.execute (no ActiveModel), optimized with OJ"
+exec_query,1419.0,0.17,29.13,1229999.33,330470.0,18014457.0,601819.0,Hash#to_json from ActiveRecord.exec_query (no ActiveModel)
+exec_query_oj,369.33,0.13,29.07,206042.0,40463.0,3693868.0,601819.0,"Hash#to_json from ActiveRecord.exec_query (no ActiveModel), optimized with OJ"
+exec_query_map,1567.33,0.13,28.53,1352003.67,371216.0,21012167.0,601819.0,Array of hashes mapped from ActiveRecord.exec_query (no ActiveModel)
+exec_query_map_oj,398.67,0.1,30.33,237905.33,51209.33,5491652.67,601819.0,"Array of hashes mapped from ActiveRecord.exec_query (no ActiveModel), optimized with OJ"
+pg,256.33,0.17,70.3,7759.33,1206.33,782535.67,691818.0,PostgreSQL json_agg and json_build_object

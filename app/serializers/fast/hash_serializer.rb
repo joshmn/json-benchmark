@@ -6,6 +6,10 @@ module Fast
       obj['id']
     end
 
+    attribute :id do |obj|
+      obj['id']
+    end
+
     attribute :latitude do |obj|
       obj['latitude']
     end
