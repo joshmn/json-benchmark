@@ -125,7 +125,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.6)
-    puma (4.3.8)
+    puma (4.3.9)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -237,7 +237,7 @@ DEPENDENCIES
   oj
   pg (>= 0.18, < 2.0)
   pry
-  puma (~> 4.1)
+  puma (~> 4.3)
   rails (~> 6.0.2, >= 6.0.2.2)
   rails-perftest
   ruby-prof
