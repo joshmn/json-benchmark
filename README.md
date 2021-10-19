@@ -13,8 +13,8 @@ Uses various serialization patterns (see homes_controller.rb) — each has a fla
 Install ApacheBench.
 
 `bundle`
-`rake db:seed` 
-`rails s`
+`rails db:create db:migrate db:seed` 
+`rails server RAILS_ENV=production`
 
 Then,
 
