@@ -112,6 +112,14 @@ SerializeManager.register 'jbuilder_map_oj', 'Jbuilder from an array of ActiveMo
   render json: Oj.dump(Jbuilder.new { |json| json.array! homes, :id, :latitude, :longitude }.target!, mode: :compat), adapter: nil, serializer: nil
 end
 
+SerializeManager.register 'turbostreamer_oj', 'TurboStreamer from an array of ActiveModel objects with OJ' do |homes|
+  render json: TurboStreamer.new(encoder: :oj) { |json| json.array! homes, :id, :latitude, :longitude }.target!
+end
+
+SerializeManager.register 'turbostreamer_wankel', 'TurboStreamer from an array of ActiveModel objects with Wankel' do |homes|
+  render json: TurboStreamer.new(encoder: :wankel) { |json| json.array! homes, :id, :latitude, :longitude }.target!
+end
+
 SerializeManager.register 'execute', 'Hash#to_json via ActiveRecord.execute (no ActiveModel)' do |homes|
   render json: Home.connection.execute(homes.to_sql).to_a.to_json, adapter: nil
 end
