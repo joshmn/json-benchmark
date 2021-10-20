@@ -35,7 +35,7 @@ if options[:all]
   @types = SerializeManager.types
 end
 
-options[:host] ||= 'localhost:3000'
+options[:host] ||= '127.0.0.1:3000'
 puts options.inspect
 def self.run(options)
   puts "On #{options.inspect}"
@@ -48,7 +48,7 @@ def self.run(options)
     log = `sed -n '/#{query}/,/Completed 200/p' #{random}-log.txt`
     `rm #{random}-log.txt`
   else
-    log = `sed -n '/#{query}/,/Completed 200/p' log/development.log`
+    log = `sed -n '/#{query}/,/Completed 200/p' log/#{ENV['RAILS_ENV'] || 'development'}.log`
   end
   response_builder = SerializeManager.description(options[:kind])
   open(filename, 'a') { |f| f.puts "\nDescription\n#{response_builder}\n\n\nRails request log\n#{log}" }
