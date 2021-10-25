@@ -1,0 +1,128 @@
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+
+Server Software:        
+Server Hostname:        127.0.0.1
+Server Port:            3000
+
+Document Path:          /homes.json?via=nothing_map_oj&limit=10000&bob=d78f617fb145d3ba25f9fb3805435a79
+Document Length:        599678 bytes
+
+Concurrency Level:      1
+Time taken for tests:   18.375 seconds
+Complete requests:      10
+Failed requests:        0
+Total transferred:      6001270 bytes
+HTML transferred:       5996780 bytes
+Requests per second:    0.54 [#/sec] (mean)
+Time per request:       1837.494 [ms] (mean)
+Time per request:       1837.494 [ms] (mean, across all concurrent requests)
+Transfer rate:          318.95 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       0
+Processing:  1741 1837  60.1   1866    1934
+Waiting:     1740 1837  60.1   1865    1933
+Total:       1741 1837  60.1   1866    1934
+
+Percentage of the requests served within a certain time (ms)
+  50%   1866
+  66%   1868
+  75%   1869
+  80%   1901
+  90%   1934
+  95%   1934
+  98%   1934
+  99%   1934
+ 100%   1934 (longest request)
+
+Description
+Maps a collection to a hash and renders using OJ
+
+
+Rails request log
+Started GET "/homes.json?via=nothing_map_oj&limit=10000&bob=d78f617fb145d3ba25f9fb3805435a79" for 127.0.0.1 at 2021-10-25 08:23:12 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map_oj", "limit"=>"10000", "bob"=>"d78f617fb145d3ba25f9fb3805435a79"}
+  [1m[36mHome Load (28.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:40:in `map'
+MEMSTAT: 380502 / 34206906
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 1865ms (Views: 0.1ms | ActiveRecord: 28.2ms | Allocations: 1393758)
+Started GET "/homes.json?via=nothing_map_oj&limit=10000&bob=d78f617fb145d3ba25f9fb3805435a79" for 127.0.0.1 at 2021-10-25 08:23:13 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map_oj", "limit"=>"10000", "bob"=>"d78f617fb145d3ba25f9fb3805435a79"}
+  [1m[36mHome Load (36.0ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:40:in `map'
+MEMSTAT: 380502 / 34206906
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 1865ms (Views: 0.1ms | ActiveRecord: 36.0ms | Allocations: 1393754)
+Started GET "/homes.json?via=nothing_map_oj&limit=10000&bob=d78f617fb145d3ba25f9fb3805435a79" for 127.0.0.1 at 2021-10-25 08:23:15 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map_oj", "limit"=>"10000", "bob"=>"d78f617fb145d3ba25f9fb3805435a79"}
+  [1m[36mHome Load (28.3ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:40:in `map'
+MEMSTAT: 380502 / 34206906
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 1932ms (Views: 0.2ms | ActiveRecord: 28.3ms | Allocations: 1393755)
+Started GET "/homes.json?via=nothing_map_oj&limit=10000&bob=d78f617fb145d3ba25f9fb3805435a79" for 127.0.0.1 at 2021-10-25 08:23:17 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map_oj", "limit"=>"10000", "bob"=>"d78f617fb145d3ba25f9fb3805435a79"}
+  [1m[36mHome Load (27.9ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:40:in `map'
+MEMSTAT: 380505 / 34207226
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 1863ms (Views: 0.2ms | ActiveRecord: 27.9ms | Allocations: 1393821)
+Started GET "/homes.json?via=nothing_map_oj&limit=10000&bob=d78f617fb145d3ba25f9fb3805435a79" for 127.0.0.1 at 2021-10-25 08:23:19 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map_oj", "limit"=>"10000", "bob"=>"d78f617fb145d3ba25f9fb3805435a79"}
+  [1m[36mHome Load (29.0ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:40:in `map'
+MEMSTAT: 380503 / 34206946
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 1898ms (Views: 0.3ms | ActiveRecord: 29.0ms | Allocations: 1393786)
+Started GET "/homes.json?via=nothing_map_oj&limit=10000&bob=d78f617fb145d3ba25f9fb3805435a79" for 127.0.0.1 at 2021-10-25 08:23:21 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map_oj", "limit"=>"10000", "bob"=>"d78f617fb145d3ba25f9fb3805435a79"}
+  [1m[36mHome Load (28.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:40:in `map'
+MEMSTAT: 380502 / 34206906
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 1778ms (Views: 0.1ms | ActiveRecord: 28.4ms | Allocations: 1393757)
+Started GET "/homes.json?via=nothing_map_oj&limit=10000&bob=d78f617fb145d3ba25f9fb3805435a79" for 127.0.0.1 at 2021-10-25 08:23:23 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map_oj", "limit"=>"10000", "bob"=>"d78f617fb145d3ba25f9fb3805435a79"}
+  [1m[36mHome Load (28.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:40:in `map'
+MEMSTAT: 380503 / 34206946
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 1819ms (Views: 0.1ms | ActiveRecord: 28.4ms | Allocations: 1393783)
+Started GET "/homes.json?via=nothing_map_oj&limit=10000&bob=d78f617fb145d3ba25f9fb3805435a79" for 127.0.0.1 at 2021-10-25 08:23:25 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map_oj", "limit"=>"10000", "bob"=>"d78f617fb145d3ba25f9fb3805435a79"}
+  [1m[36mHome Load (29.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:40:in `map'
+MEMSTAT: 380502 / 34206906
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 1782ms (Views: 0.1ms | ActiveRecord: 29.4ms | Allocations: 1393758)
+Started GET "/homes.json?via=nothing_map_oj&limit=10000&bob=d78f617fb145d3ba25f9fb3805435a79" for 127.0.0.1 at 2021-10-25 08:23:26 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map_oj", "limit"=>"10000", "bob"=>"d78f617fb145d3ba25f9fb3805435a79"}
+  [1m[36mHome Load (27.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:40:in `map'
+MEMSTAT: 380502 / 34206906
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 1806ms (Views: 0.1ms | ActiveRecord: 27.2ms | Allocations: 1393755)
+Started GET "/homes.json?via=nothing_map_oj&limit=10000&bob=d78f617fb145d3ba25f9fb3805435a79" for 127.0.0.1 at 2021-10-25 08:23:28 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map_oj", "limit"=>"10000", "bob"=>"d78f617fb145d3ba25f9fb3805435a79"}
+  [1m[36mHome Load (30.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:40:in `map'
+MEMSTAT: 380503 / 34206946
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 1738ms (Views: 0.1ms | ActiveRecord: 30.4ms | Allocations: 1393780)

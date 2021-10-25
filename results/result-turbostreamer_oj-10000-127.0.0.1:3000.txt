@@ -1,0 +1,128 @@
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+
+Server Software:        
+Server Hostname:        127.0.0.1
+Server Port:            3000
+
+Document Path:          /homes.json?via=turbostreamer_oj&limit=10000&bob=79174e4d2d5aaeb1f0ec098f82ae0cb7
+Document Length:        599679 bytes
+
+Concurrency Level:      1
+Time taken for tests:   13.411 seconds
+Complete requests:      10
+Failed requests:        0
+Total transferred:      6001280 bytes
+HTML transferred:       5996790 bytes
+Requests per second:    0.75 [#/sec] (mean)
+Time per request:       1341.137 [ms] (mean)
+Time per request:       1341.137 [ms] (mean, across all concurrent requests)
+Transfer rate:          436.99 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:  1279 1341  58.6   1353    1469
+Waiting:     1278 1340  58.6   1352    1469
+Total:       1279 1341  58.6   1353    1470
+
+Percentage of the requests served within a certain time (ms)
+  50%   1353
+  66%   1361
+  75%   1366
+  80%   1379
+  90%   1470
+  95%   1470
+  98%   1470
+  99%   1470
+ 100%   1470 (longest request)
+
+Description
+TurboStreamer from an array of ActiveModel objects with OJ
+
+
+Rails request log
+Started GET "/homes.json?via=turbostreamer_oj&limit=10000&bob=79174e4d2d5aaeb1f0ec098f82ae0cb7" for 127.0.0.1 at 2021-10-25 08:30:21 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"turbostreamer_oj", "limit"=>"10000", "bob"=>"79174e4d2d5aaeb1f0ec098f82ae0cb7"}
+  [1m[36mHome Load (27.8ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:116:in `block (2 levels) in <main>'
+MEMSTAT: 272688 / 21295799
+RESPONSE BODY SIZE: 599679
+Completed 200 OK in 1467ms (Views: 0.2ms | ActiveRecord: 27.8ms | Allocations: 983753)
+Started GET "/homes.json?via=turbostreamer_oj&limit=10000&bob=79174e4d2d5aaeb1f0ec098f82ae0cb7" for 127.0.0.1 at 2021-10-25 08:30:22 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"turbostreamer_oj", "limit"=>"10000", "bob"=>"79174e4d2d5aaeb1f0ec098f82ae0cb7"}
+  [1m[36mHome Load (28.1ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:116:in `block (2 levels) in <main>'
+MEMSTAT: 270676 / 20832483
+RESPONSE BODY SIZE: 599679
+Completed 200 OK in 1364ms (Views: 0.4ms | ActiveRecord: 28.1ms | Allocations: 975057)
+Started GET "/homes.json?via=turbostreamer_oj&limit=10000&bob=79174e4d2d5aaeb1f0ec098f82ae0cb7" for 127.0.0.1 at 2021-10-25 08:30:24 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"turbostreamer_oj", "limit"=>"10000", "bob"=>"79174e4d2d5aaeb1f0ec098f82ae0cb7"}
+  [1m[36mHome Load (27.7ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:116:in `block (2 levels) in <main>'
+MEMSTAT: 270676 / 20832483
+RESPONSE BODY SIZE: 599679
+Completed 200 OK in 1298ms (Views: 0.2ms | ActiveRecord: 27.7ms | Allocations: 975060)
+Started GET "/homes.json?via=turbostreamer_oj&limit=10000&bob=79174e4d2d5aaeb1f0ec098f82ae0cb7" for 127.0.0.1 at 2021-10-25 08:30:25 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"turbostreamer_oj", "limit"=>"10000", "bob"=>"79174e4d2d5aaeb1f0ec098f82ae0cb7"}
+  [1m[36mHome Load (28.4ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:116:in `block (2 levels) in <main>'
+MEMSTAT: 270676 / 20832483
+RESPONSE BODY SIZE: 599679
+Completed 200 OK in 1359ms (Views: 0.2ms | ActiveRecord: 28.4ms | Allocations: 975057)
+Started GET "/homes.json?via=turbostreamer_oj&limit=10000&bob=79174e4d2d5aaeb1f0ec098f82ae0cb7" for 127.0.0.1 at 2021-10-25 08:30:26 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"turbostreamer_oj", "limit"=>"10000", "bob"=>"79174e4d2d5aaeb1f0ec098f82ae0cb7"}
+  [1m[36mHome Load (27.8ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:116:in `block (2 levels) in <main>'
+MEMSTAT: 270677 / 20832523
+RESPONSE BODY SIZE: 599679
+Completed 200 OK in 1278ms (Views: 0.2ms | ActiveRecord: 27.8ms | Allocations: 975089)
+Started GET "/homes.json?via=turbostreamer_oj&limit=10000&bob=79174e4d2d5aaeb1f0ec098f82ae0cb7" for 127.0.0.1 at 2021-10-25 08:30:28 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"turbostreamer_oj", "limit"=>"10000", "bob"=>"79174e4d2d5aaeb1f0ec098f82ae0cb7"}
+  [1m[36mHome Load (28.3ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:116:in `block (2 levels) in <main>'
+MEMSTAT: 270676 / 20832483
+RESPONSE BODY SIZE: 599679
+Completed 200 OK in 1350ms (Views: 0.2ms | ActiveRecord: 28.3ms | Allocations: 975060)
+Started GET "/homes.json?via=turbostreamer_oj&limit=10000&bob=79174e4d2d5aaeb1f0ec098f82ae0cb7" for 127.0.0.1 at 2021-10-25 08:30:29 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"turbostreamer_oj", "limit"=>"10000", "bob"=>"79174e4d2d5aaeb1f0ec098f82ae0cb7"}
+  [1m[36mHome Load (29.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:116:in `block (2 levels) in <main>'
+MEMSTAT: 270676 / 20832483
+RESPONSE BODY SIZE: 599679
+Completed 200 OK in 1277ms (Views: 0.2ms | ActiveRecord: 29.5ms | Allocations: 975057)
+Started GET "/homes.json?via=turbostreamer_oj&limit=10000&bob=79174e4d2d5aaeb1f0ec098f82ae0cb7" for 127.0.0.1 at 2021-10-25 08:30:30 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"turbostreamer_oj", "limit"=>"10000", "bob"=>"79174e4d2d5aaeb1f0ec098f82ae0cb7"}
+  [1m[36mHome Load (28.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:116:in `block (2 levels) in <main>'
+MEMSTAT: 270676 / 20832483
+RESPONSE BODY SIZE: 599679
+Completed 200 OK in 1289ms (Views: 0.2ms | ActiveRecord: 28.6ms | Allocations: 975060)
+Started GET "/homes.json?via=turbostreamer_oj&limit=10000&bob=79174e4d2d5aaeb1f0ec098f82ae0cb7" for 127.0.0.1 at 2021-10-25 08:30:31 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"turbostreamer_oj", "limit"=>"10000", "bob"=>"79174e4d2d5aaeb1f0ec098f82ae0cb7"}
+  [1m[36mHome Load (32.0ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:116:in `block (2 levels) in <main>'
+MEMSTAT: 270676 / 20832483
+RESPONSE BODY SIZE: 599679
+Completed 200 OK in 1377ms (Views: 0.2ms | ActiveRecord: 32.0ms | Allocations: 975057)
+Started GET "/homes.json?via=turbostreamer_oj&limit=10000&bob=79174e4d2d5aaeb1f0ec098f82ae0cb7" for 127.0.0.1 at 2021-10-25 08:30:33 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"turbostreamer_oj", "limit"=>"10000", "bob"=>"79174e4d2d5aaeb1f0ec098f82ae0cb7"}
+  [1m[36mHome Load (29.0ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:116:in `block (2 levels) in <main>'
+MEMSTAT: 270679 / 20832803
+RESPONSE BODY SIZE: 599679
+Completed 200 OK in 1327ms (Views: 0.2ms | ActiveRecord: 29.0ms | Allocations: 975123)

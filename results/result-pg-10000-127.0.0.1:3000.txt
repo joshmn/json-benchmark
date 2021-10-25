@@ -1,0 +1,128 @@
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+
+Server Software:        
+Server Hostname:        127.0.0.1
+Server Port:            3000
+
+Document Path:          /homes.json?via=pg&limit=10000&bob=ac5b41cedb2bd31c8be23f900f54c5d8
+Document Length:        691818 bytes
+
+Concurrency Level:      1
+Time taken for tests:   2.901 seconds
+Complete requests:      10
+Failed requests:        0
+Total transferred:      6922670 bytes
+HTML transferred:       6918180 bytes
+Requests per second:    3.45 [#/sec] (mean)
+Time per request:       290.102 [ms] (mean)
+Time per request:       290.102 [ms] (mean, across all concurrent requests)
+Transfer rate:          2330.36 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       0
+Processing:   283  290   5.1    291     298
+Waiting:      282  289   5.1    290     297
+Total:        283  290   5.2    291     298
+
+Percentage of the requests served within a certain time (ms)
+  50%    291
+  66%    292
+  75%    295
+  80%    295
+  90%    298
+  95%    298
+  98%    298
+  99%    298
+ 100%    298 (longest request)
+
+Description
+PostgreSQL json_agg and json_build_object
+
+
+Rails request log
+Started GET "/homes.json?via=pg&limit=10000&bob=ac5b41cedb2bd31c8be23f900f54c5d8" for 127.0.0.1 at 2021-10-25 08:32:19 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"10000", "bob"=>"ac5b41cedb2bd31c8be23f900f54c5d8"}
+  [1m[35mSQL (95.0ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000) home;[0m
+  ↳ config/initializers/strategies.rb:157:in `block in <main>'
+MEMSTAT: 418 / 747088
+RESPONSE BODY SIZE: 691818
+Completed 200 OK in 292ms (Views: 0.1ms | ActiveRecord: 95.0ms | Allocations: 5164)
+Started GET "/homes.json?via=pg&limit=10000&bob=ac5b41cedb2bd31c8be23f900f54c5d8" for 127.0.0.1 at 2021-10-25 08:32:19 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"10000", "bob"=>"ac5b41cedb2bd31c8be23f900f54c5d8"}
+  [1m[35mSQL (98.0ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000) home;[0m
+  ↳ config/initializers/strategies.rb:157:in `block in <main>'
+MEMSTAT: 399 / 745928
+RESPONSE BODY SIZE: 691818
+Completed 200 OK in 289ms (Views: 0.1ms | ActiveRecord: 98.0ms | Allocations: 4907)
+Started GET "/homes.json?via=pg&limit=10000&bob=ac5b41cedb2bd31c8be23f900f54c5d8" for 127.0.0.1 at 2021-10-25 08:32:20 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"10000", "bob"=>"ac5b41cedb2bd31c8be23f900f54c5d8"}
+  [1m[35mSQL (92.9ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000) home;[0m
+  ↳ config/initializers/strategies.rb:157:in `block in <main>'
+MEMSTAT: 402 / 746248
+RESPONSE BODY SIZE: 691818
+Completed 200 OK in 293ms (Views: 0.1ms | ActiveRecord: 92.9ms | Allocations: 4972)
+Started GET "/homes.json?via=pg&limit=10000&bob=ac5b41cedb2bd31c8be23f900f54c5d8" for 127.0.0.1 at 2021-10-25 08:32:20 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"10000", "bob"=>"ac5b41cedb2bd31c8be23f900f54c5d8"}
+  [1m[35mSQL (81.6ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000) home;[0m
+  ↳ config/initializers/strategies.rb:157:in `block in <main>'
+MEMSTAT: 400 / 745968
+RESPONSE BODY SIZE: 691818
+Completed 200 OK in 287ms (Views: 0.2ms | ActiveRecord: 81.6ms | Allocations: 4933)
+Started GET "/homes.json?via=pg&limit=10000&bob=ac5b41cedb2bd31c8be23f900f54c5d8" for 127.0.0.1 at 2021-10-25 08:32:20 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"10000", "bob"=>"ac5b41cedb2bd31c8be23f900f54c5d8"}
+  [1m[35mSQL (71.9ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000) home;[0m
+  ↳ config/initializers/strategies.rb:157:in `block in <main>'
+MEMSTAT: 399 / 745928
+RESPONSE BODY SIZE: 691818
+Completed 200 OK in 288ms (Views: 0.2ms | ActiveRecord: 71.9ms | Allocations: 4907)
+Started GET "/homes.json?via=pg&limit=10000&bob=ac5b41cedb2bd31c8be23f900f54c5d8" for 127.0.0.1 at 2021-10-25 08:32:21 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"10000", "bob"=>"ac5b41cedb2bd31c8be23f900f54c5d8"}
+  [1m[35mSQL (90.4ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000) home;[0m
+  ↳ config/initializers/strategies.rb:157:in `block in <main>'
+MEMSTAT: 399 / 745928
+RESPONSE BODY SIZE: 691818
+Completed 200 OK in 282ms (Views: 0.2ms | ActiveRecord: 90.4ms | Allocations: 4908)
+Started GET "/homes.json?via=pg&limit=10000&bob=ac5b41cedb2bd31c8be23f900f54c5d8" for 127.0.0.1 at 2021-10-25 08:32:21 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"10000", "bob"=>"ac5b41cedb2bd31c8be23f900f54c5d8"}
+  [1m[35mSQL (92.1ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000) home;[0m
+  ↳ config/initializers/strategies.rb:157:in `block in <main>'
+MEMSTAT: 399 / 745928
+RESPONSE BODY SIZE: 691818
+Completed 200 OK in 295ms (Views: 0.2ms | ActiveRecord: 92.1ms | Allocations: 4908)
+Started GET "/homes.json?via=pg&limit=10000&bob=ac5b41cedb2bd31c8be23f900f54c5d8" for 127.0.0.1 at 2021-10-25 08:32:21 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"10000", "bob"=>"ac5b41cedb2bd31c8be23f900f54c5d8"}
+  [1m[35mSQL (87.7ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000) home;[0m
+  ↳ config/initializers/strategies.rb:157:in `block in <main>'
+MEMSTAT: 399 / 745928
+RESPONSE BODY SIZE: 691818
+Completed 200 OK in 280ms (Views: 0.2ms | ActiveRecord: 87.7ms | Allocations: 4907)
+Started GET "/homes.json?via=pg&limit=10000&bob=ac5b41cedb2bd31c8be23f900f54c5d8" for 127.0.0.1 at 2021-10-25 08:32:22 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"10000", "bob"=>"ac5b41cedb2bd31c8be23f900f54c5d8"}
+  [1m[35mSQL (94.8ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000) home;[0m
+  ↳ config/initializers/strategies.rb:157:in `block in <main>'
+MEMSTAT: 399 / 745928
+RESPONSE BODY SIZE: 691818
+Completed 200 OK in 285ms (Views: 0.1ms | ActiveRecord: 94.8ms | Allocations: 4907)
+Started GET "/homes.json?via=pg&limit=10000&bob=ac5b41cedb2bd31c8be23f900f54c5d8" for 127.0.0.1 at 2021-10-25 08:32:22 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"pg", "limit"=>"10000", "bob"=>"ac5b41cedb2bd31c8be23f900f54c5d8"}
+  [1m[35mSQL (90.2ms)[0m  [1m[34mselect json_agg(json_build_object('id', id, 'latitude', CAST(latitude AS TEXT), 'longitude', CAST(longitude AS TEXT))) from (SELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT 10000) home;[0m
+  ↳ config/initializers/strategies.rb:157:in `block in <main>'
+MEMSTAT: 402 / 746248
+RESPONSE BODY SIZE: 691818
+Completed 200 OK in 281ms (Views: 0.1ms | ActiveRecord: 90.2ms | Allocations: 4972)

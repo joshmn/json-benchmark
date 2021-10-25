@@ -1,0 +1,128 @@
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+
+Server Software:        
+Server Hostname:        127.0.0.1
+Server Port:            3000
+
+Document Path:          /homes.json?via=fast&limit=10000&bob=807c4b70ad9d8ec9df16d65718f2e9c3
+Document Length:        1008594 bytes
+
+Concurrency Level:      1
+Time taken for tests:   33.886 seconds
+Complete requests:      10
+Failed requests:        0
+Total transferred:      10090430 bytes
+HTML transferred:       10085940 bytes
+Requests per second:    0.30 [#/sec] (mean)
+Time per request:       3388.604 [ms] (mean)
+Time per request:       3388.604 [ms] (mean, across all concurrent requests)
+Transfer rate:          290.80 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:  3293 3388  97.9   3369    3629
+Waiting:     3292 3387  98.0   3368    3629
+Total:       3294 3389  98.0   3369    3630
+
+Percentage of the requests served within a certain time (ms)
+  50%   3369
+  66%   3378
+  75%   3405
+  80%   3467
+  90%   3630
+  95%   3630
+  98%   3630
+  99%   3630
+ 100%   3630 (longest request)
+
+Description
+JSON:API Serializer an array of ActiveModel objects
+
+
+Rails request log
+Started GET "/homes.json?via=fast&limit=10000&bob=807c4b70ad9d8ec9df16d65718f2e9c3" for 127.0.0.1 at 2021-10-25 08:26:04 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast", "limit"=>"10000", "bob"=>"807c4b70ad9d8ec9df16d65718f2e9c3"}
+  [1m[36mHome Load (26.5ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:72:in `block in <main>'
+MEMSTAT: 762468 / 49701144
+RESPONSE BODY SIZE: 1008594
+Completed 200 OK in 3402ms (Views: 0.2ms | ActiveRecord: 26.5ms | Allocations: 2712473)
+Started GET "/homes.json?via=fast&limit=10000&bob=807c4b70ad9d8ec9df16d65718f2e9c3" for 127.0.0.1 at 2021-10-25 08:26:07 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast", "limit"=>"10000", "bob"=>"807c4b70ad9d8ec9df16d65718f2e9c3"}
+  [1m[36mHome Load (28.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:72:in `block in <main>'
+MEMSTAT: 760552 / 49261436
+RESPONSE BODY SIZE: 1008594
+Completed 200 OK in 3357ms (Views: 0.2ms | ActiveRecord: 28.2ms | Allocations: 2704229)
+Started GET "/homes.json?via=fast&limit=10000&bob=807c4b70ad9d8ec9df16d65718f2e9c3" for 127.0.0.1 at 2021-10-25 08:26:11 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast", "limit"=>"10000", "bob"=>"807c4b70ad9d8ec9df16d65718f2e9c3"}
+  [1m[36mHome Load (27.9ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:72:in `block in <main>'
+MEMSTAT: 760550 / 49261356
+RESPONSE BODY SIZE: 1008594
+Completed 200 OK in 3322ms (Views: 0.2ms | ActiveRecord: 27.9ms | Allocations: 2704177)
+Started GET "/homes.json?via=fast&limit=10000&bob=807c4b70ad9d8ec9df16d65718f2e9c3" for 127.0.0.1 at 2021-10-25 08:26:14 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast", "limit"=>"10000", "bob"=>"807c4b70ad9d8ec9df16d65718f2e9c3"}
+  [1m[36mHome Load (28.8ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:72:in `block in <main>'
+MEMSTAT: 760553 / 49261676
+RESPONSE BODY SIZE: 1008594
+Completed 200 OK in 3627ms (Views: 0.2ms | ActiveRecord: 28.8ms | Allocations: 2704242)
+Started GET "/homes.json?via=fast&limit=10000&bob=807c4b70ad9d8ec9df16d65718f2e9c3" for 127.0.0.1 at 2021-10-25 08:26:17 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast", "limit"=>"10000", "bob"=>"807c4b70ad9d8ec9df16d65718f2e9c3"}
+  [1m[36mHome Load (28.3ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:72:in `block in <main>'
+MEMSTAT: 760551 / 49261396
+RESPONSE BODY SIZE: 1008594
+Completed 200 OK in 3365ms (Views: 0.2ms | ActiveRecord: 28.3ms | Allocations: 2704145)
+Started GET "/homes.json?via=fast&limit=10000&bob=807c4b70ad9d8ec9df16d65718f2e9c3" for 127.0.0.1 at 2021-10-25 08:26:21 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast", "limit"=>"10000", "bob"=>"807c4b70ad9d8ec9df16d65718f2e9c3"}
+  [1m[36mHome Load (27.3ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:72:in `block in <main>'
+MEMSTAT: 760550 / 49261356
+RESPONSE BODY SIZE: 1008594
+Completed 200 OK in 3339ms (Views: 0.2ms | ActiveRecord: 27.3ms | Allocations: 2704117)
+Started GET "/homes.json?via=fast&limit=10000&bob=807c4b70ad9d8ec9df16d65718f2e9c3" for 127.0.0.1 at 2021-10-25 08:26:24 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast", "limit"=>"10000", "bob"=>"807c4b70ad9d8ec9df16d65718f2e9c3"}
+  [1m[36mHome Load (26.9ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:72:in `block in <main>'
+MEMSTAT: 760552 / 49261436
+RESPONSE BODY SIZE: 1008594
+Completed 200 OK in 3312ms (Views: 0.2ms | ActiveRecord: 26.9ms | Allocations: 2704246)
+Started GET "/homes.json?via=fast&limit=10000&bob=807c4b70ad9d8ec9df16d65718f2e9c3" for 127.0.0.1 at 2021-10-25 08:26:28 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast", "limit"=>"10000", "bob"=>"807c4b70ad9d8ec9df16d65718f2e9c3"}
+  [1m[36mHome Load (26.9ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:72:in `block in <main>'
+MEMSTAT: 760550 / 49261356
+RESPONSE BODY SIZE: 1008594
+Completed 200 OK in 3375ms (Views: 0.2ms | ActiveRecord: 26.9ms | Allocations: 2704179)
+Started GET "/homes.json?via=fast&limit=10000&bob=807c4b70ad9d8ec9df16d65718f2e9c3" for 127.0.0.1 at 2021-10-25 08:26:31 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast", "limit"=>"10000", "bob"=>"807c4b70ad9d8ec9df16d65718f2e9c3"}
+  [1m[36mHome Load (28.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:72:in `block in <main>'
+MEMSTAT: 760553 / 49261676
+RESPONSE BODY SIZE: 1008594
+Completed 200 OK in 3463ms (Views: 0.2ms | ActiveRecord: 28.2ms | Allocations: 2704244)
+Started GET "/homes.json?via=fast&limit=10000&bob=807c4b70ad9d8ec9df16d65718f2e9c3" for 127.0.0.1 at 2021-10-25 08:26:34 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"fast", "limit"=>"10000", "bob"=>"807c4b70ad9d8ec9df16d65718f2e9c3"}
+  [1m[36mHome Load (31.3ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:72:in `block in <main>'
+MEMSTAT: 760550 / 49261356
+RESPONSE BODY SIZE: 1008594
+Completed 200 OK in 3290ms (Views: 0.2ms | ActiveRecord: 31.3ms | Allocations: 2704117)

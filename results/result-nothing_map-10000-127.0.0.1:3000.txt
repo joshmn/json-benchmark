@@ -1,0 +1,138 @@
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+
+Server Software:        
+Server Hostname:        127.0.0.1
+Server Port:            3000
+
+Document Path:          /homes.json?via=nothing_map&limit=10000&bob=98130b46c6f8e13771714608c33f9468
+Document Length:        599678 bytes
+
+Concurrency Level:      1
+Time taken for tests:   22.238 seconds
+Complete requests:      10
+Failed requests:        0
+Total transferred:      6001270 bytes
+HTML transferred:       5996780 bytes
+Requests per second:    0.45 [#/sec] (mean)
+Time per request:       2223.799 [ms] (mean)
+Time per request:       2223.799 [ms] (mean, across all concurrent requests)
+Transfer rate:          263.54 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       0
+Processing:  2014 2224 217.8   2165    2732
+Waiting:     2013 2223 217.8   2164    2732
+Total:       2014 2224 217.8   2165    2733
+
+Percentage of the requests served within a certain time (ms)
+  50%   2165
+  66%   2188
+  75%   2298
+  80%   2437
+  90%   2733
+  95%   2733
+  98%   2733
+  99%   2733
+ 100%   2733 (longest request)
+
+Description
+Maps a collection to a hash
+
+
+Rails request log
+Started GET "/homes.json?via=nothing_map&limit=10000&bob=98130b46c6f8e13771714608c33f9468" for 127.0.0.1 at 2021-10-25 08:22:49 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map", "limit"=>"10000", "bob"=>"98130b46c6f8e13771714608c33f9468"}
+  [1m[36mHome Load (27.2ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:36:in `map'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (157.19ms)
+MEMSTAT: 460549 / 36450921
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 2123ms (Views: 157.5ms | ActiveRecord: 27.2ms | Allocations: 1664148)
+Started GET "/homes.json?via=nothing_map&limit=10000&bob=98130b46c6f8e13771714608c33f9468" for 127.0.0.1 at 2021-10-25 08:22:51 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map", "limit"=>"10000", "bob"=>"98130b46c6f8e13771714608c33f9468"}
+  [1m[36mHome Load (27.9ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:36:in `map'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (161.97ms)
+MEMSTAT: 460549 / 36450921
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 2074ms (Views: 162.3ms | ActiveRecord: 27.9ms | Allocations: 1664144)
+Started GET "/homes.json?via=nothing_map&limit=10000&bob=98130b46c6f8e13771714608c33f9468" for 127.0.0.1 at 2021-10-25 08:22:54 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map", "limit"=>"10000", "bob"=>"98130b46c6f8e13771714608c33f9468"}
+  [1m[36mHome Load (30.8ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:36:in `map'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (158.03ms)
+MEMSTAT: 460548 / 36450881
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 2040ms (Views: 158.3ms | ActiveRecord: 30.8ms | Allocations: 1664048)
+Started GET "/homes.json?via=nothing_map&limit=10000&bob=98130b46c6f8e13771714608c33f9468" for 127.0.0.1 at 2021-10-25 08:22:56 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map", "limit"=>"10000", "bob"=>"98130b46c6f8e13771714608c33f9468"}
+  [1m[36mHome Load (33.0ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:36:in `map'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (156.72ms)
+MEMSTAT: 460549 / 36450921
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 2011ms (Views: 157.0ms | ActiveRecord: 33.0ms | Allocations: 1664160)
+Started GET "/homes.json?via=nothing_map&limit=10000&bob=98130b46c6f8e13771714608c33f9468" for 127.0.0.1 at 2021-10-25 08:22:58 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map", "limit"=>"10000", "bob"=>"98130b46c6f8e13771714608c33f9468"}
+  [1m[36mHome Load (29.1ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:36:in `map'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (156.84ms)
+MEMSTAT: 460548 / 36450881
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 2296ms (Views: 157.2ms | ActiveRecord: 29.1ms | Allocations: 1664116)
+Started GET "/homes.json?via=nothing_map&limit=10000&bob=98130b46c6f8e13771714608c33f9468" for 127.0.0.1 at 2021-10-25 08:23:00 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map", "limit"=>"10000", "bob"=>"98130b46c6f8e13771714608c33f9468"}
+  [1m[36mHome Load (25.3ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:36:in `map'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (163.39ms)
+MEMSTAT: 460548 / 36450881
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 2155ms (Views: 163.7ms | ActiveRecord: 25.3ms | Allocations: 1664118)
+Started GET "/homes.json?via=nothing_map&limit=10000&bob=98130b46c6f8e13771714608c33f9468" for 127.0.0.1 at 2021-10-25 08:23:02 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map", "limit"=>"10000", "bob"=>"98130b46c6f8e13771714608c33f9468"}
+  [1m[36mHome Load (29.3ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:36:in `map'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (179.22ms)
+MEMSTAT: 460548 / 36450881
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 2158ms (Views: 179.6ms | ActiveRecord: 29.3ms | Allocations: 1664116)
+Started GET "/homes.json?via=nothing_map&limit=10000&bob=98130b46c6f8e13771714608c33f9468" for 127.0.0.1 at 2021-10-25 08:23:04 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map", "limit"=>"10000", "bob"=>"98130b46c6f8e13771714608c33f9468"}
+  [1m[36mHome Load (28.1ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:36:in `map'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (184.54ms)
+MEMSTAT: 460548 / 36450881
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 2729ms (Views: 184.9ms | ActiveRecord: 28.1ms | Allocations: 1664125)
+Started GET "/homes.json?via=nothing_map&limit=10000&bob=98130b46c6f8e13771714608c33f9468" for 127.0.0.1 at 2021-10-25 08:23:07 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map", "limit"=>"10000", "bob"=>"98130b46c6f8e13771714608c33f9468"}
+  [1m[36mHome Load (28.0ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:36:in `map'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (167.91ms)
+MEMSTAT: 460552 / 36451241
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 2185ms (Views: 168.3ms | ActiveRecord: 28.0ms | Allocations: 1664131)
+Started GET "/homes.json?via=nothing_map&limit=10000&bob=98130b46c6f8e13771714608c33f9468" for 127.0.0.1 at 2021-10-25 08:23:09 -0500
+Processing by HomesController#index as JSON
+  Parameters: {"via"=>"nothing_map", "limit"=>"10000", "bob"=>"98130b46c6f8e13771714608c33f9468"}
+  [1m[36mHome Load (26.6ms)[0m  [1m[34mSELECT "homes"."id", "homes"."latitude", "homes"."longitude" FROM "homes" LIMIT $1[0m  [["LIMIT", 10000]]
+  ↳ config/initializers/strategies.rb:36:in `map'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (164.79ms)
+MEMSTAT: 460549 / 36450921
+RESPONSE BODY SIZE: 599678
+Completed 200 OK in 2434ms (Views: 165.1ms | ActiveRecord: 26.6ms | Allocations: 1664143)
